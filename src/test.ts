@@ -4,7 +4,9 @@
 const mian = AIO ?? require("AIO")
 
 
+class bb{
 
+}
 let handlepingpong;
 //
 
@@ -21,7 +23,7 @@ if (mian.AddAddon()){
 }else{
     let sendtime:number;
 
-    handlepingpong = (player:Player,msg:string) =>{
+    handlepingpong = (player:Player,msg:Creature) =>{
         print(tostring(msg),time() - sendtime)
     }
 

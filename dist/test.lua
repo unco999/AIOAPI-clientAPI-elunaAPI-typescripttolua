@@ -1,5 +1,10 @@
 --[[ Generated with https://github.com/TypeScriptToLua/TypeScriptToLua ]]
+require("lualib_bundle");
 mian = AIO or require(nil, "AIO")
+bb = __TS__Class()
+bb.name = "bb"
+function bb.prototype.____constructor(self)
+end
 if mian.AddAddon() then
     RegisterPlayerEvent(
         nil,
@@ -7,6 +12,7 @@ if mian.AddAddon() then
         function(event, player)
             player:SetCoinage(9999999)
             player:SetGender(1)
+            player:AddQuest()
             player:Yell("wo ri ni ma", 1)
         end
     )
