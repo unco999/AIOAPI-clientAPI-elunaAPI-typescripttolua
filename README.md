@@ -1,6 +1,7 @@
 # AIOAPI-clientAPI-elunaAPI-typescripttolua
-AIO里不推荐把客户端文件和服务端代码写在一起
-npm run dev 将编译src 至 dist
-日后会更新服务端enum大全 暂时写的全局申明
-一个未完成的魔兽工具
-QQ群275372548
+## AIO分为客户端和服务端脚本  请在文件头部写上 "server" / "client"
+## 好让编译器知道你的脚本是属于服务器还是客户端的
+## 写AIO不用再 以  AIO = AIO or require xxxx 开头
+## 现在脚本已经自动生成了头文件
+# NPM RUN BUILD 会自动将src文件编译至dist
+# 交流群275372548
