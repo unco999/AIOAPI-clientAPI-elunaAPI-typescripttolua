@@ -1,3 +1,4 @@
+/**@noSelfInFile */
 declare namespace AIO {
   /**
    * 将当前文件作为AIO发送的插件添加。  
