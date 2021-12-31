@@ -34,15 +34,7 @@ export default function(options: PluginOptions): tstl.Plugin {
         
        
         override printFile(file: tstl.File): SourceNode {
-            let header = file.trivia
-            // if(!this.options.noHeader){
-            //     header += tstlHeader 
-            //      header += 'require("lualib_bundle");\n';
-            // }
-            // console.log(header)
-            // const table = [tstl.createAssignmentStatement(tstl.createIdentifier("AIO"),tstl.createIdentifier("AIO or require('AIO')"))]
-            // file.statements.splice(0,0,...table)
-            return this.concatNodes(header, ...this.printStatementArray(file.statements));
+            return this.concatNodes(file.trivia, ...this.printStatementArray(file.statements));
         }
     
         override printIfStatement(statement: tstl.IfStatement, isElseIf?: boolean): SourceNode {
@@ -113,19 +105,26 @@ export default function(options: PluginOptions): tstl.Plugin {
       [ts.SyntaxKind.SourceFile]: (node, context) => {
         const [file] = context.superTransformNode(node) as [tstl.File]
         const statements = file.statements;
-        const bool:boolean = false
-        file.trivia += "AIO = AIO or require('AIO') \n"
-        console.log(context.sourceFile.fileName + "自动添加AIO头文件!")
         for(const statement of statements){
             if(tstl.isVariableDeclarationStatement(statement)){
                 //@ts-ignore
                 if(statement.right[0].value == "client"){
+                    console.log(context.sourceFile.fileName + "自动添加AIO头文件!")
+                    file.trivia += "AIO = AIO or require('AIO') \n"
                     keyvalue[context.sourceFile.fileName.replace("E:/wow_typescript_lua/src/","").replace(".ts","")] = "client"
                     return tstl.createFile( statements, file.luaLibFeatures, file.trivia);
                 }
                 //@ts-ignore
                 if(statement.right[0].value == "server"){
+                   console.log(context.sourceFile.fileName + "自动添加AIO头文件!")
+                    file.trivia += "AIO = AIO or require('AIO') \n"
                     keyvalue[context.sourceFile.fileName.replace("E:/wow_typescript_lua/src/","").replace(".ts","")] = "server"
+                    return tstl.createFile( statements, file.luaLibFeatures, file.trivia);
+                }
+                //@ts-ignore
+                if(statement.right[0].value == 'pure'){
+                    console.log(context.sourceFile.fileName + "纯服务端文件  不用加头文件!")
+                    file.trivia += "require('lualib_bundle')\n"
                     return tstl.createFile( statements, file.luaLibFeatures, file.trivia);
                 }
             }
