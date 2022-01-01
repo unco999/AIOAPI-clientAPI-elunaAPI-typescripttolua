@@ -28,7 +28,8 @@
   "include": [
     "./@types/",
     "./src/",
-    "./AIO"
+    "./AIO",
+    "./eluna"
   ],
   "tstl": {
     "luaTarget": "5.1",
