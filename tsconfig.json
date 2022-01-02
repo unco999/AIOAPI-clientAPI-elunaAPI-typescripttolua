@@ -3,12 +3,6 @@
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
     "target": "ESNext",
     "module": "commonjs",
-    "allowJs": true,
-    "lib": [
-      "ESNext",
-      "DOM"
-    ],
-    "declaration": true,
     "strict": true,
     "rootDir": "./src/",
     "outDir": "./dist/",
