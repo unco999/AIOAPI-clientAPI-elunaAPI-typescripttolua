@@ -170,8 +170,9 @@ export default function (options: PluginOptions): tstl.Plugin {
             if(statement.right){
                 //@ts-ignore
               if(statement?.left[0]?.text && tempEnum[statement?.right[0]?.index?.value]){
+                 console.log(statement?.left[0])
                 //@ts-ignore
-                 return  super.printVariableAssignmentStatement(createAssignmentStatement( [createIdentifier(statement?.left[0]?.text)],[createIdentifier(tempEnum[statement?.right[0]?.index?.value].toString())]))
+                 return  super.printVariableAssignmentStatement(createAssignmentStatement( [createIdentifier(statement?.left[0]?.text,undefined,statement?.left[0].symbolId)],[createIdentifier(tempEnum[statement?.right[0]?.index?.value].toString())]))
               }
             }
             return super.printVariableAssignmentStatement(statement)
