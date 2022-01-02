@@ -8,5 +8,5 @@ declare enum UnitMoveType
     MOVE_TURN_RATE      = 5,
     MOVE_FLIGHT         = 6,
     MOVE_FLIGHT_BACK    = 7,
-    MOVE_PITCH_RATE     = 8
+    MOVE_PITCH_RATE     = 8,
 };

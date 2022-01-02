@@ -1,3 +1,6 @@
+/**
+ * @compileMembersOnly
+ */
 declare interface Unit{
     /**
      * 将给定法术条目的光环添加到单位的给定目标上。

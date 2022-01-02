@@ -19,6 +19,6 @@ declare enum MovementGeneratorType
     FOLLOW_MOTION_TYPE              = 14,
     EFFECT_MOTION_TYPE              = 15, // mangos
     ROTATE_MOTION_TYPE              = 15, // TC
-    EFFECT_MOTION_TYPE              = 16, // TC
+    //EFFECT_MOTION_TYPE              = 16, // TC
     NULL_MOTION_TYPE                = 17, // TC
 };

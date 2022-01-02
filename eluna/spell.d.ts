@@ -1,3 +1,6 @@
+/**
+ * @compileMembersOnly
+ */
 declare interface Spell{
     /**
      * 取消法术。

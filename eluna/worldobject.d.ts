@@ -1,3 +1,6 @@
+/**
+ * @compileMembersOnly
+ */
 declare interface WorldObject{
     /**
      * 向WorldObject注册一个定时事件 当传递的函

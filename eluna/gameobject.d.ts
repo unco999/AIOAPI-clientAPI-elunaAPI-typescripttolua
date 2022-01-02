@@ -1,3 +1,6 @@
+/**
+ * @compileMembersOnly
+ */
 declare interface GameObject extends Object extends WorldObject{
     /**
      * 消失一个游戏对象  游戏对象可能会被核心自动重生

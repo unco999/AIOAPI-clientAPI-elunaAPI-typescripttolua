@@ -7,5 +7,5 @@ declare enum SpellSchools
     SPELL_SCHOOL_FROST   = 4,
     SPELL_SCHOOL_SHADOW  = 5,
     SPELL_SCHOOL_ARCANE  = 6,
-    MAX_SPELL_SCHOOL     = 7
+    MAX_SPELL_SCHOOL     = 7,
 };

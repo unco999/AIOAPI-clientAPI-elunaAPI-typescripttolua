@@ -8,5 +8,5 @@ declare enum GroupEvents
     GROUP_EVENT_ON_DISBAND                  =     5,       // (event, group)
     GROUP_EVENT_ON_CREATE                   =     6,       // (event, group, leaderGuid, groupType)
 
-    GROUP_EVENT_COUNT
+    //GROUP_EVENT_COUNT
 };

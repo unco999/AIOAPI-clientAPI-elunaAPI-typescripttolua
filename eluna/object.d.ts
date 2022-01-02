@@ -1,3 +1,6 @@
+/**
+ * @compileMembersOnly
+ */
 declare enum TypeID
 {
     TYPEID_OBJECT        = 0,

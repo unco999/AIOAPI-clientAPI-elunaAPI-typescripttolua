@@ -1,3 +1,6 @@
+/**
+ * @compileMembersOnly
+ */
 declare interface WorldPacket{
     /**
      * 返回WorldPacket的操作码。

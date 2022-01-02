@@ -37,5 +37,5 @@ declare enum CreatureEvents
     CREATURE_EVENT_ON_DIALOG_STATUS                   = 35, // (event, player, creature)
     CREATURE_EVENT_ON_ADD                             = 36, // (event, creature)
     CREATURE_EVENT_ON_REMOVE                          = 37, // (event, creature)
-    CREATURE_EVENT_COUNT
+//    CREATURE_EVENT_COUNT                                 
 };

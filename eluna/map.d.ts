@@ -1,3 +1,6 @@
+/**
+ * @compileMembersOnly
+ */
 declare interface Map{
     /**
      * 返回地图在指定 X、Y 和 Z 坐标处的区域 ID 。

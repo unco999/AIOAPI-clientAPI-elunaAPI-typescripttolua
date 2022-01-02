@@ -14,5 +14,5 @@ declare enum GameObjectEvents
     GAMEOBJECT_EVENT_ON_ADD                         = 12,   // (event, gameobject)
     GAMEOBJECT_EVENT_ON_REMOVE                      = 13,   // (event, gameobject)
     GAMEOBJECT_EVENT_ON_USE                         = 14,   // (event, go, player)
-    GAMEOBJECT_EVENT_COUNT
+    //GAMEOBJECT_EVENT_COUNT
 };

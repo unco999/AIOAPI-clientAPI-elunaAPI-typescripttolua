@@ -13,5 +13,5 @@ declare enum GuildEvents
     GUILD_EVENT_ON_EVENT                    =     10,      // (event, guild, eventType, plrGUIDLow1, plrGUIDLow2, newRank)  // TODO
     GUILD_EVENT_ON_BANK_EVENT               =     11,      // (event, guild, eventType, tabId, playerGUIDLow, itemOrMoney, itemStackCount, destTabId)
 
-    GUILD_EVENT_COUNT
+    //GUILD_EVENT_COUNT
 };

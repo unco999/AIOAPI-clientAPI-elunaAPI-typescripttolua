@@ -1,3 +1,6 @@
+/**
+ * @compileMembersOnly
+ */
 declare enum ReputationRank
 {
     REP_HATED       = 0,

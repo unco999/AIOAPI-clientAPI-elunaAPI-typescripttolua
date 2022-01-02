@@ -1,6 +1,4 @@
-require('lualib_bundle')
 local ____exports = {}
-local ____ = "pure"
 local ____mysql_tool_main = require("mysql_tool.mysql_tool_main")
 local INSERT = ____mysql_tool_main.INSERT
 local UPDATE = ____mysql_tool_main.UPDATE

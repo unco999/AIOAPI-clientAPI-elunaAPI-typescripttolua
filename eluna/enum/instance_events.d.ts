@@ -7,5 +7,5 @@ declare enum InstanceEvents
     INSTANCE_EVENT_ON_CREATURE_CREATE               = 5,    // (event, instance_data, map, creature)
     INSTANCE_EVENT_ON_GAMEOBJECT_CREATE             = 6,    // (event, instance_data, map, go)
     INSTANCE_EVENT_ON_CHECK_ENCOUNTER_IN_PROGRESS   = 7,    // (event, instance_data, map)
-    INSTANCE_EVENT_COUNT
+   // INSTANCE_EVENT_COUNT
 };

@@ -1,3 +1,6 @@
+/**
+ * @compileMembersOnly
+ */
 declare interface Aura{
     /**
      * 返回导致应用此光环的法术ID 。

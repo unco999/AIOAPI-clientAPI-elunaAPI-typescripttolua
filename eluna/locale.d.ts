@@ -1,3 +1,6 @@
+/**
+ * @compileMembersOnly
+ */
 declare interface LocaleConstant{
     
 }

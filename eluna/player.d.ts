@@ -1,3 +1,6 @@
+/**
+ * @compileMembersOnly
+ */
 declare interface Player{
     /**
      * 将组合点添加到玩家

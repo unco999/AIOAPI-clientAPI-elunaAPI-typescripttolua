@@ -24,6 +24,9 @@ import {
 import {transformIdentifier} from "typescript-to-lua/dist/transformation/visitors/identifier";
 import {transformPropertyName} from "typescript-to-lua/dist/transformation/visitors/literal";
 import unresolvableRequirePath from "typescript-to-lua/dist/transformation/utils/diagnostics"
+//@ts-ignore
+import {tempEnum} from './enum'
+
 
 function transformImportSpecifier(
   context: tstl.TransformationContext,
@@ -159,16 +162,19 @@ export default function (options: PluginOptions): tstl.Plugin {
     printer: (program, emitHost, fileName, file) => {
       class Printer extends tstl.LuaPrinter {
 
-
         override printFile(file: tstl.File): SourceNode {
           return this.concatNodes(file.trivia, ...this.printStatementArray(file.statements));
         }
 
-        override printStatementArray(statements: tstl.Statement[]): (string | SourceNode)[] {
-          for (const statement of statements) {
-
-          }
-          return super.printStatementArray(statements)
+        printVariableAssignmentStatement(statement: tstl.AssignmentStatement): SourceNode {
+            if(statement.right){
+                //@ts-ignore
+              if(statement?.left[0]?.text && tempEnum[statement?.right[0]?.index?.value]){
+                //@ts-ignore
+                 return  super.printVariableAssignmentStatement(createAssignmentStatement( [createIdentifier(statement?.left[0]?.text)],[createIdentifier(tempEnum[statement?.right[0]?.index?.value].toString())]))
+              }
+            }
+            return super.printVariableAssignmentStatement(statement)
         }
 
         override printIfStatement(statement: tstl.IfStatement, isElseIf?: boolean): SourceNode {
@@ -206,19 +212,6 @@ export default function (options: PluginOptions): tstl.Plugin {
 
           return this.concatNodes(...chunks);
         }
-
-        // printIdentifier(expression: tstl.Identifier): SourceNode {
-        //     console.log(expression)
-        //     // if(expression.text == 'require'){
-        //     //     expression.text = ""
-        //     // }
-        //     return super.printIdentifier(expression)
-        // }
-
-
-
-        // Hook the printing of the return to swap it with a block of exports for the API interface (only for matching script types)
-
 
       }
 
@@ -355,6 +348,19 @@ export default function (options: PluginOptions): tstl.Plugin {
           return result;
         }
       },
+      // [ts.SyntaxKind.Identifier]:(Identifier,context)=>{
+      //   let _Identifier = context.superTransformExpression(Identifier)
+      //     //@ts-ignore
+      //     if(Identifier?.parent?.name?.escapedText){
+      //                //@ts-ignore
+      //         if(tempEnum[Identifier.parent.name.escapedText]){
+      //           //@ts-ignore
+                  
+                
+      //         }
+      //     }
+      //     return _Identifier
+      // }
     },
   };
 }

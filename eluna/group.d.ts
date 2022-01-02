@@ -1,3 +1,6 @@
+/**
+ * @compileMembersOnly
+ */
 declare interface Group{
     /**
      * 向群组添加新成员

@@ -1,3 +1,6 @@
+/**
+ * @compileMembersOnly
+ */
 declare interface Guild{
     /**
      * 将指定的玩家添加到指定等级的公会。如果未指定排名，则默认为无。

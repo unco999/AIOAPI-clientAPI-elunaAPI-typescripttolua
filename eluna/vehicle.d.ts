@@ -1,3 +1,6 @@
+/**
+ * @compileMembersOnly
+ */
 declare interface Vehicle{
     /**
      * 将单位乘客添加到车辆中的指定座位

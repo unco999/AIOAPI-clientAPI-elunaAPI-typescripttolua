@@ -1,3 +1,7 @@
+
+/**
+ * @compileMembersOnly
+ */
 declare interface Creature extends Unit extends Object extends WorldObject{
     /**
      * 为生物添加战利品模式

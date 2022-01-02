@@ -1,3 +1,6 @@
+/**
+ * @compileMembersOnly
+ */
 declare interface ElunaQuery{
     /**
      * 返回当前行指定列中的数据，转换为布尔值。

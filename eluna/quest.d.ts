@@ -1,3 +1,6 @@
+/**
+ * @compileMembersOnly
+ */
 declare enum QuestStatus
 {
     QUEST_STATUS_NONE           = 0,

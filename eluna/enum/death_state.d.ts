@@ -4,5 +4,5 @@ declare enum DeathState
     JUST_DIED      = 1,
     CORPSE         = 2,
     DEAD           = 3,
-    JUST_RESPAWNED = 4
+    JUST_RESPAWNED = 4,
 };

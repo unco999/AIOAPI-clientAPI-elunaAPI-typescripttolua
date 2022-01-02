@@ -7,8 +7,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "tstl --watch",
-    "build":"tstl",
-    "update":"node transfrom/dtsTomodules.js"
+    "build":"node transfrom/dtsTomodules.js && tstl",
+    "init":"node transfrom/dtsTomodules.js"
   },
   "author": "",
   "license": "ISC",
