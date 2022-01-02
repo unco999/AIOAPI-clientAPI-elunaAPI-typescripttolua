@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "tstl --watch",
-    "build":"tstl"
+    "build":"tstl",
+    "update":"node transfrom/dtsTomodules.js"
   },
   "author": "",
   "license": "ISC",
