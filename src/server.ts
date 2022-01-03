@@ -2,7 +2,7 @@
 "server"
 import { INSERT, UPDATE } from "./mysql_tool/mysql_tool_main"
 
-const e = {c:{a:()=>{}}}
+const e = {c:{a:{d:()=>{}}}}
 
 if(AIO.AddAddon()){
     class Server{
@@ -10,6 +10,7 @@ if(AIO.AddAddon()){
             console.log("hellow Server")
         }
     }
+    e.c.a.d()
     print(CreatureEvents.CREATURE_EVENT_ON_SUMMONED_CREATURE_DIED)
     const asdhjk = CreatureEvents.CREATURE_EVENT_ON_DIALOG_STATUS
     const _server = new Server()

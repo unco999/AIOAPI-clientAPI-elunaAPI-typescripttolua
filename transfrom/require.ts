@@ -173,6 +173,12 @@ export default function (options: PluginOptions): tstl.Plugin {
         protected printBlock(block: tstl.Block): SourceNode {
             const chunk = []
             for(const statement of block.statements){
+                if(statement?.expression?.prefixExpression){
+                  console.log(statement?.expression)
+                  console.log("打印")
+                  chunk.push(this.printStatement(statement))
+                  continue;
+                }
                 if(tstl.isVariableDeclarationStatement(statement)){
                   //@ts-ignore
                     if(statement?.right[0]?.index){
@@ -188,8 +194,8 @@ export default function (options: PluginOptions): tstl.Plugin {
                 if(tstl.isExpressionStatement(statement)){
                     let count = 0
                     let parmas = []
+                    //@ts-ignore
                     parmas = statement.expression.params.map(element => {
-                      count++
                         if(element.index){
                             return enumChace(element.index.value)
                         }
@@ -200,12 +206,13 @@ export default function (options: PluginOptions): tstl.Plugin {
                           return `"${element.value}"`
                         }
                     })
-                    chunk.push(`${statement.expression.expression.text}(${[...parmas].toString()}) \n`)
+                    chunk.push(`${statement?.expression?.expression?.text}(${[...parmas].toString()}) \n`)
                     this.pushIndent()
                     continue
-                }
+                }else{
                   chunk.push(this.printStatement(statement) + "\n")
                   continue
+                }
             }
             return this.concatNodes(...chunk)
         }
@@ -235,7 +242,7 @@ export default function (options: PluginOptions): tstl.Plugin {
               console.log("检测到服务端脚本,所有导入自动从AddAddon后开始...")
               chunks.push(this.indent("require('lualib_bundle')\n"));
               _require[newName].forEach(__require=>{
-                 chunks.push(this.printCallExpression(__require))
+                 chunks.push(this.printCallExpression(__require) + "\n")
               })
               this.pushIndent();
             }
