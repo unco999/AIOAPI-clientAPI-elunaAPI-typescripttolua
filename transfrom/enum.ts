@@ -1,10 +1,4 @@
 export const tempEnum = {
-    CURRENT_MELEE_SPELL             : 0,
-    CURRENT_GENERIC_SPELL           : 1,
-    CURRENT_CHANNELED_SPELL         : 2,
-    CURRENT_AUTOREPEAT_SPELL        : 3,
-
-
     CREATURE_EVENT_ON_ENTER_COMBAT                    : 1,  // (event, creature, target) - Can return true to stop normal action
     CREATURE_EVENT_ON_LEAVE_COMBAT                    : 2,  // (event, creature) - Can return true to stop normal action
     CREATURE_EVENT_ON_TARGET_DIED                     : 3,  // (event, creature, victim) - Can return true to stop normal action
@@ -45,20 +39,10 @@ export const tempEnum = {
 //    CREATURE_EVENT_COUNT                                 
 
 
-    // Guild
-    GUILD_EVENT_ON_ADD_MEMBER               :     1,       // (event, guild, player, rank)
-    GUILD_EVENT_ON_REMOVE_MEMBER            :     2,       // (event, guild, player, isDisbanding)
-    GUILD_EVENT_ON_MOTD_CHANGE              :     3,       // (event, guild, newMotd)
-    GUILD_EVENT_ON_INFO_CHANGE              :     4,       // (event, guild, newInfo)
-    GUILD_EVENT_ON_CREATE                   :     5,       // (event, guild, leader, name)  // Not on TC
-    GUILD_EVENT_ON_DISBAND                  :     6,       // (event, guild)
-    GUILD_EVENT_ON_MONEY_WITHDRAW           :     7,       // (event, guild, player, amount, isRepair) - Can return new money amount
-    GUILD_EVENT_ON_MONEY_DEPOSIT            :     8,       // (event, guild, player, amount) - Can return new money amount
-    GUILD_EVENT_ON_ITEM_MOVE                :     9,       // (event, guild, player, item, isSrcBank, srcContainer, srcSlotId, isDestBank, destContainer, destSlotId)   // TODO
-    GUILD_EVENT_ON_EVENT                    :     10,      // (event, guild, eventType, plrGUIDLow1, plrGUIDLow2, newRank)  // TODO
-    GUILD_EVENT_ON_BANK_EVENT               :     11,      // (event, guild, eventType, tabId, playerGUIDLow, itemOrMoney, itemStackCount, destTabId)
-
-    //GUILD_EVENT_COUNT
+    CURRENT_MELEE_SPELL             : 0,
+    CURRENT_GENERIC_SPELL           : 1,
+    CURRENT_CHANNELED_SPELL         : 2,
+    CURRENT_AUTOREPEAT_SPELL        : 3,
 
 
     GAMEOBJECT_EVENT_ON_AIUPDATE                    : 1,    // (event, go, diff)
@@ -85,15 +69,25 @@ export const tempEnum = {
     JUST_RESPAWNED : 4,
 
 
-    // Group
-    GROUP_EVENT_ON_MEMBER_ADD               :     1,       // (event, group, guid)
-    GROUP_EVENT_ON_MEMBER_INVITE            :     2,       // (event, group, guid)
-    GROUP_EVENT_ON_MEMBER_REMOVE            :     3,       // (event, group, guid, method, kicker, reason)
-    GROUP_EVENT_ON_LEADER_CHANGE            :     4,       // (event, group, newLeaderGuid, oldLeaderGuid)
-    GROUP_EVENT_ON_DISBAND                  :     5,       // (event, group)
-    GROUP_EVENT_ON_CREATE                   :     6,       // (event, group, leaderGuid, groupType)
+    GOSSIP_EVENT_ON_HELLO                           : 1,    // (event, player, object) - Object is the Creature/GameObject/Item. Can return false to do default action. For item gossip can return false to stop spell casting.
+    GOSSIP_EVENT_ON_SELECT                          : 2,    // (event, player, object, sender, intid, code, menu_id) - Object is the Creature/GameObject/Item/Player, menu_id is only for player gossip. Can return false to do default action.
+   // GOSSIP_EVENT_COUNT
 
-    //GROUP_EVENT_COUNT
+
+    // Guild
+    GUILD_EVENT_ON_ADD_MEMBER               :     1,       // (event, guild, player, rank)
+    GUILD_EVENT_ON_REMOVE_MEMBER            :     2,       // (event, guild, player, isDisbanding)
+    GUILD_EVENT_ON_MOTD_CHANGE              :     3,       // (event, guild, newMotd)
+    GUILD_EVENT_ON_INFO_CHANGE              :     4,       // (event, guild, newInfo)
+    GUILD_EVENT_ON_CREATE                   :     5,       // (event, guild, leader, name)  // Not on TC
+    GUILD_EVENT_ON_DISBAND                  :     6,       // (event, guild)
+    GUILD_EVENT_ON_MONEY_WITHDRAW           :     7,       // (event, guild, player, amount, isRepair) - Can return new money amount
+    GUILD_EVENT_ON_MONEY_DEPOSIT            :     8,       // (event, guild, player, amount) - Can return new money amount
+    GUILD_EVENT_ON_ITEM_MOVE                :     9,       // (event, guild, player, item, isSrcBank, srcContainer, srcSlotId, isDestBank, destContainer, destSlotId)   // TODO
+    GUILD_EVENT_ON_EVENT                    :     10,      // (event, guild, eventType, plrGUIDLow1, plrGUIDLow2, newRank)  // TODO
+    GUILD_EVENT_ON_BANK_EVENT               :     11,      // (event, guild, eventType, tabId, playerGUIDLow, itemOrMoney, itemStackCount, destTabId)
+
+    //GUILD_EVENT_COUNT
 
 
     LOCALE_enUS : 0,
@@ -140,9 +134,15 @@ export const tempEnum = {
     NULL_MOTION_TYPE                : 17, // TC
 
 
-    GOSSIP_EVENT_ON_HELLO                           : 1,    // (event, player, object) - Object is the Creature/GameObject/Item. Can return false to do default action. For item gossip can return false to stop spell casting.
-    GOSSIP_EVENT_ON_SELECT                          : 2,    // (event, player, object, sender, intid, code, menu_id) - Object is the Creature/GameObject/Item/Player, menu_id is only for player gossip. Can return false to do default action.
-   // GOSSIP_EVENT_COUNT
+    // Group
+    GROUP_EVENT_ON_MEMBER_ADD               :     1,       // (event, group, guid)
+    GROUP_EVENT_ON_MEMBER_INVITE            :     2,       // (event, group, guid)
+    GROUP_EVENT_ON_MEMBER_REMOVE            :     3,       // (event, group, guid, method, kicker, reason)
+    GROUP_EVENT_ON_LEADER_CHANGE            :     4,       // (event, group, newLeaderGuid, oldLeaderGuid)
+    GROUP_EVENT_ON_DISBAND                  :     5,       // (event, group)
+    GROUP_EVENT_ON_CREATE                   :     6,       // (event, group, leaderGuid, groupType)
+
+    //GROUP_EVENT_COUNT
 
 
     UNIT_NPC_FLAG_NONE                  : 0x00000000,       // SKIP
@@ -237,30 +237,6 @@ export const tempEnum = {
     //PACKET_EVENT_COUNT
 
 
-    RACE_NONE               : 0,  // SKIP
-    RACE_HUMAN              : 1,  // TITLE Human
-    RACE_ORC                : 2,  // TITLE Orc
-    RACE_DWARF              : 3,  // TITLE Dwarf
-    RACE_NIGHTELF           : 4,  // TITLE Night Elf
-    RACE_UNDEAD_PLAYER      : 5,  // TITLE Undead
-    RACE_TAUREN             : 6,  // TITLE Tauren
-    RACE_GNOME              : 7,  // TITLE Gnome
-    RACE_TROLL              : 8,  // TITLE Troll
-    //RACE_GOBLIN             : 9,
-    RACE_BLOODELF           : 10, // TITLE Blood Elf
-    RACE_DRAENEI            : 11, //, TITLE Draenei
-    //RACE_FEL_ORC            : 12,
-    //RACE_NAGA               : 13,
-    //RACE_BROKEN             : 14,
-    //RACE_SKELETON           : 15,
-    //RACE_VRYKUL             : 16,
-    //RACE_TUSKARR            : 17,
-    //RACE_FOREST_TROLL       : 18,
-    //RACE_TAUNKA             : 19,
-    //RACE_NORTHREND_SKELETON : 20,
-    //RACE_ICE_TROLL          : 21
-
-
     POWER_MANA        : 0,
     POWER_RAGE        : 1,
     POWER_FOCUS       : 2,
@@ -271,18 +247,6 @@ export const tempEnum = {
     MAX_POWERS        : 7,
     POWER_ALL         : 127,         // default for class?
     POWER_HEALTH      : 0xFFFFFFFE,   // (-2 as signed value)
-
-
-    SELECT_TARGET_RANDOM : 0,  //Just selects a random target
-    SELECT_TARGET_TOPAGGRO : 1,    //Selects targets from top aggro to bottom
-    SELECT_TARGET_BOTTOMAGGRO : 2, //Selects targets from bottom aggro to top
-    SELECT_TARGET_NEAREST : 3,
-    SELECT_TARGET_FARTHEST : 4,
-
-
-    SHEATH_STATE_UNARMED  : 0, // non prepared weapon
-    SHEATH_STATE_MELEE    : 1, // prepared melee weapon
-    SHEATH_STATE_RANGED   : 2,  // prepared ranged weapon
 
 
     // Server
@@ -341,14 +305,50 @@ export const tempEnum = {
     GAME_EVENT_STOP                         :     35,       // (event, gameeventid)
 
 
-    SPELL_SCHOOL_NORMAL  : 0,
-    SPELL_SCHOOL_HOLY    : 1,
-    SPELL_SCHOOL_FIRE    : 2,
-    SPELL_SCHOOL_NATURE  : 3,
-    SPELL_SCHOOL_FROST   : 4,
-    SPELL_SCHOOL_SHADOW  : 5,
-    SPELL_SCHOOL_ARCANE  : 6,
-    MAX_SPELL_SCHOOL     : 7,
+    RACE_NONE               : 0,  // SKIP
+    RACE_HUMAN              : 1,  // TITLE Human
+    RACE_ORC                : 2,  // TITLE Orc
+    RACE_DWARF              : 3,  // TITLE Dwarf
+    RACE_NIGHTELF           : 4,  // TITLE Night Elf
+    RACE_UNDEAD_PLAYER      : 5,  // TITLE Undead
+    RACE_TAUREN             : 6,  // TITLE Tauren
+    RACE_GNOME              : 7,  // TITLE Gnome
+    RACE_TROLL              : 8,  // TITLE Troll
+    //RACE_GOBLIN             : 9,
+    RACE_BLOODELF           : 10, // TITLE Blood Elf
+    RACE_DRAENEI            : 11, //, TITLE Draenei
+    //RACE_FEL_ORC            : 12,
+    //RACE_NAGA               : 13,
+    //RACE_BROKEN             : 14,
+    //RACE_SKELETON           : 15,
+    //RACE_VRYKUL             : 16,
+    //RACE_TUSKARR            : 17,
+    //RACE_FOREST_TROLL       : 18,
+    //RACE_TAUNKA             : 19,
+    //RACE_NORTHREND_SKELETON : 20,
+    //RACE_ICE_TROLL          : 21
+
+
+    SELECT_TARGET_RANDOM : 0,  //Just selects a random target
+    SELECT_TARGET_TOPAGGRO : 1,    //Selects targets from top aggro to bottom
+    SELECT_TARGET_BOTTOMAGGRO : 2, //Selects targets from bottom aggro to top
+    SELECT_TARGET_NEAREST : 3,
+    SELECT_TARGET_FARTHEST : 4,
+
+
+    SHEATH_STATE_UNARMED  : 0, // non prepared weapon
+    SHEATH_STATE_MELEE    : 1, // prepared melee weapon
+    SHEATH_STATE_RANGED   : 2,  // prepared ranged weapon
+
+
+    SPELL_SCHOOL_MASK_NONE    : 0,
+    SPELL_SCHOOL_MASK_NORMAL  : 1,
+    SPELL_SCHOOL_MASK_HOLY    : 2,
+    SPELL_SCHOOL_MASK_FIRE    : 4,
+    SPELL_SCHOOL_MASK_NATURE  : 8,
+    SPELL_SCHOOL_MASK_FROST   : 16,
+    SPELL_SCHOOL_MASK_SHADOW  : 32,
+    SPELL_SCHOOL_MASK_ARCANE  : 64,
 
 
     MOVE_WALK           : 0,
@@ -362,14 +362,14 @@ export const tempEnum = {
     MOVE_PITCH_RATE     : 8,
 
 
-    SPELL_SCHOOL_MASK_NONE    : 0,
-    SPELL_SCHOOL_MASK_NORMAL  : 1,
-    SPELL_SCHOOL_MASK_HOLY    : 2,
-    SPELL_SCHOOL_MASK_FIRE    : 4,
-    SPELL_SCHOOL_MASK_NATURE  : 8,
-    SPELL_SCHOOL_MASK_FROST   : 16,
-    SPELL_SCHOOL_MASK_SHADOW  : 32,
-    SPELL_SCHOOL_MASK_ARCANE  : 64,
+    SPELL_SCHOOL_NORMAL  : 0,
+    SPELL_SCHOOL_HOLY    : 1,
+    SPELL_SCHOOL_FIRE    : 2,
+    SPELL_SCHOOL_NATURE  : 3,
+    SPELL_SCHOOL_FROST   : 4,
+    SPELL_SCHOOL_SHADOW  : 5,
+    SPELL_SCHOOL_ARCANE  : 6,
+    MAX_SPELL_SCHOOL     : 7,
 
 
     UNIT_STATE_DIED                  : 0x00000001, // player has fake death aura

@@ -179,7 +179,7 @@ export default function (options: PluginOptions): tstl.Plugin {
                       //@ts-ignore
                           //@ts-ignore
                             const enumstr = tempEnum[statement!.right[0]!.index!.value]
-                            chunk.push(this.indent(enumstr ?`local ${statement.left[0].text} = ${enumstr}` : statement!.right[0]!.index!.value.toString()))
+                            chunk.push(this.indent(enumstr ?`local ${statement.left[0].text} = ${enumstr} \n` : statement!.right[0]!.index!.value.toString() + "\n"))
                             chunk.push('\n')
                             this.pushIndent()
                             continue
@@ -191,7 +191,6 @@ export default function (options: PluginOptions): tstl.Plugin {
                     parmas = statement.expression.params.map(element => {
                       count++
                         if(element.index){
-                            console.log(enumChace(element.index.value),"美劇")
                             return enumChace(element.index.value)
                         }
                         if(element.text){
@@ -201,14 +200,11 @@ export default function (options: PluginOptions): tstl.Plugin {
                           return `"${element.value}"`
                         }
                     })
-                    console.log("循環了c",count)
-                    console.log(statement.expression)
-                    
-                    chunk.push(`${statement.expression.expression.text}(${[...parmas].toString()})`)
+                    chunk.push(`${statement.expression.expression.text}(${[...parmas].toString()}) \n`)
                     this.pushIndent()
                     continue
                 }
-                  chunk.push(this.printStatement(statement))
+                  chunk.push(this.printStatement(statement) + "\n")
                   continue
             }
             return this.concatNodes(...chunk)

@@ -10,6 +10,7 @@ if(AIO.AddAddon()){
             console.log("hellow Server")
         }
     }
+    print(CreatureEvents.CREATURE_EVENT_ON_SUMMONED_CREATURE_DIED)
     const asdhjk = CreatureEvents.CREATURE_EVENT_ON_DIALOG_STATUS
     const _server = new Server()
 }
