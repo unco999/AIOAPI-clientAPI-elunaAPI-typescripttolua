@@ -1,4 +1,10 @@
 export const tempEnum = {
+    CURRENT_MELEE_SPELL             : 0,
+    CURRENT_GENERIC_SPELL           : 1,
+    CURRENT_CHANNELED_SPELL         : 2,
+    CURRENT_AUTOREPEAT_SPELL        : 3,
+
+
     CREATURE_EVENT_ON_ENTER_COMBAT                    : 1,  // (event, creature, target) - Can return true to stop normal action
     CREATURE_EVENT_ON_LEAVE_COMBAT                    : 2,  // (event, creature) - Can return true to stop normal action
     CREATURE_EVENT_ON_TARGET_DIED                     : 3,  // (event, creature, victim) - Can return true to stop normal action
@@ -39,10 +45,20 @@ export const tempEnum = {
 //    CREATURE_EVENT_COUNT                                 
 
 
-    CURRENT_MELEE_SPELL             : 0,
-    CURRENT_GENERIC_SPELL           : 1,
-    CURRENT_CHANNELED_SPELL         : 2,
-    CURRENT_AUTOREPEAT_SPELL        : 3,
+    // Guild
+    GUILD_EVENT_ON_ADD_MEMBER               :     1,       // (event, guild, player, rank)
+    GUILD_EVENT_ON_REMOVE_MEMBER            :     2,       // (event, guild, player, isDisbanding)
+    GUILD_EVENT_ON_MOTD_CHANGE              :     3,       // (event, guild, newMotd)
+    GUILD_EVENT_ON_INFO_CHANGE              :     4,       // (event, guild, newInfo)
+    GUILD_EVENT_ON_CREATE                   :     5,       // (event, guild, leader, name)  // Not on TC
+    GUILD_EVENT_ON_DISBAND                  :     6,       // (event, guild)
+    GUILD_EVENT_ON_MONEY_WITHDRAW           :     7,       // (event, guild, player, amount, isRepair) - Can return new money amount
+    GUILD_EVENT_ON_MONEY_DEPOSIT            :     8,       // (event, guild, player, amount) - Can return new money amount
+    GUILD_EVENT_ON_ITEM_MOVE                :     9,       // (event, guild, player, item, isSrcBank, srcContainer, srcSlotId, isDestBank, destContainer, destSlotId)   // TODO
+    GUILD_EVENT_ON_EVENT                    :     10,      // (event, guild, eventType, plrGUIDLow1, plrGUIDLow2, newRank)  // TODO
+    GUILD_EVENT_ON_BANK_EVENT               :     11,      // (event, guild, eventType, tabId, playerGUIDLow, itemOrMoney, itemStackCount, destTabId)
+
+    //GUILD_EVENT_COUNT
 
 
     GAMEOBJECT_EVENT_ON_AIUPDATE                    : 1,    // (event, go, diff)
@@ -69,11 +85,6 @@ export const tempEnum = {
     JUST_RESPAWNED : 4,
 
 
-    GOSSIP_EVENT_ON_HELLO                           : 1,    // (event, player, object) - Object is the Creature/GameObject/Item. Can return false to do default action. For item gossip can return false to stop spell casting.
-    GOSSIP_EVENT_ON_SELECT                          : 2,    // (event, player, object, sender, intid, code, menu_id) - Object is the Creature/GameObject/Item/Player, menu_id is only for player gossip. Can return false to do default action.
-   // GOSSIP_EVENT_COUNT
-
-
     // Group
     GROUP_EVENT_ON_MEMBER_ADD               :     1,       // (event, group, guid)
     GROUP_EVENT_ON_MEMBER_INVITE            :     2,       // (event, group, guid)
@@ -85,20 +96,15 @@ export const tempEnum = {
     //GROUP_EVENT_COUNT
 
 
-    // Guild
-    GUILD_EVENT_ON_ADD_MEMBER               :     1,       // (event, guild, player, rank)
-    GUILD_EVENT_ON_REMOVE_MEMBER            :     2,       // (event, guild, player, isDisbanding)
-    GUILD_EVENT_ON_MOTD_CHANGE              :     3,       // (event, guild, newMotd)
-    GUILD_EVENT_ON_INFO_CHANGE              :     4,       // (event, guild, newInfo)
-    GUILD_EVENT_ON_CREATE                   :     5,       // (event, guild, leader, name)  // Not on TC
-    GUILD_EVENT_ON_DISBAND                  :     6,       // (event, guild)
-    GUILD_EVENT_ON_MONEY_WITHDRAW           :     7,       // (event, guild, player, amount, isRepair) - Can return new money amount
-    GUILD_EVENT_ON_MONEY_DEPOSIT            :     8,       // (event, guild, player, amount) - Can return new money amount
-    GUILD_EVENT_ON_ITEM_MOVE                :     9,       // (event, guild, player, item, isSrcBank, srcContainer, srcSlotId, isDestBank, destContainer, destSlotId)   // TODO
-    GUILD_EVENT_ON_EVENT                    :     10,      // (event, guild, eventType, plrGUIDLow1, plrGUIDLow2, newRank)  // TODO
-    GUILD_EVENT_ON_BANK_EVENT               :     11,      // (event, guild, eventType, tabId, playerGUIDLow, itemOrMoney, itemStackCount, destTabId)
-
-    //GUILD_EVENT_COUNT
+    LOCALE_enUS : 0,
+    LOCALE_koKR : 1,
+    LOCALE_frFR : 2,
+    LOCALE_deDE : 3,
+    LOCALE_zhCN : 4,
+    LOCALE_zhTW : 5,
+    LOCALE_esES : 6,
+    LOCALE_esMX : 7,
+    LOCALE_ruRU : 8,
 
 
     INSTANCE_EVENT_ON_INITIALIZE                    : 1,    // (event, instance_data, map)
@@ -109,17 +115,6 @@ export const tempEnum = {
     INSTANCE_EVENT_ON_GAMEOBJECT_CREATE             : 6,    // (event, instance_data, map, go)
     INSTANCE_EVENT_ON_CHECK_ENCOUNTER_IN_PROGRESS   : 7,    // (event, instance_data, map)
    // INSTANCE_EVENT_COUNT
-
-
-    LOCALE_enUS : 0,
-    LOCALE_koKR : 1,
-    LOCALE_frFR : 2,
-    LOCALE_deDE : 3,
-    LOCALE_zhCN : 4,
-    LOCALE_zhTW : 5,
-    LOCALE_esES : 6,
-    LOCALE_esMX : 7,
-    LOCALE_ruRU : 8,
 
 
     IDLE_MOTION_TYPE                : 0,
@@ -145,11 +140,39 @@ export const tempEnum = {
     NULL_MOTION_TYPE                : 17, // TC
 
 
-    PACKET_EVENT_ON_PACKET_RECEIVE          :     5,       // (event, packet, player) - Player only if accessible. Can return false, newPacket
-    PACKET_EVENT_ON_PACKET_RECEIVE_UNKNOWN  :     6,       // Not Implemented
-    PACKET_EVENT_ON_PACKET_SEND             :     7,       // (event, packet, player) - Player only if accessible. Can return false, newPacket
+    GOSSIP_EVENT_ON_HELLO                           : 1,    // (event, player, object) - Object is the Creature/GameObject/Item. Can return false to do default action. For item gossip can return false to stop spell casting.
+    GOSSIP_EVENT_ON_SELECT                          : 2,    // (event, player, object, sender, intid, code, menu_id) - Object is the Creature/GameObject/Item/Player, menu_id is only for player gossip. Can return false to do default action.
+   // GOSSIP_EVENT_COUNT
 
-    //PACKET_EVENT_COUNT
+
+    UNIT_NPC_FLAG_NONE                  : 0x00000000,       // SKIP
+    UNIT_NPC_FLAG_GOSSIP                : 0x00000001,       // TITLE has gossip menu DESCRIPTION 100%
+    UNIT_NPC_FLAG_QUESTGIVER            : 0x00000002,       // TITLE is quest giver DESCRIPTION guessed, probably ok
+    UNIT_NPC_FLAG_UNK1                  : 0x00000004,
+    UNIT_NPC_FLAG_UNK2                  : 0x00000008,
+    UNIT_NPC_FLAG_TRAINER               : 0x00000010,       // TITLE is trainer DESCRIPTION 100%
+    UNIT_NPC_FLAG_TRAINER_CLASS         : 0x00000020,       // TITLE is class trainer DESCRIPTION 100%
+    UNIT_NPC_FLAG_TRAINER_PROFESSION    : 0x00000040,       // TITLE is profession trainer DESCRIPTION 100%
+    UNIT_NPC_FLAG_VENDOR                : 0x00000080,       // TITLE is vendor (generic) DESCRIPTION 100%
+    UNIT_NPC_FLAG_VENDOR_AMMO           : 0x00000100,       // TITLE is vendor (ammo) DESCRIPTION 100%, general goods vendor
+    UNIT_NPC_FLAG_VENDOR_FOOD           : 0x00000200,       // TITLE is vendor (food) DESCRIPTION 100%
+    UNIT_NPC_FLAG_VENDOR_POISON         : 0x00000400,       // TITLE is vendor (poison) DESCRIPTION guessed
+    UNIT_NPC_FLAG_VENDOR_REAGENT        : 0x00000800,       // TITLE is vendor (reagents) DESCRIPTION 100%
+    UNIT_NPC_FLAG_REPAIR                : 0x00001000,       // TITLE can repair DESCRIPTION 100%
+    UNIT_NPC_FLAG_FLIGHTMASTER          : 0x00002000,       // TITLE is flight master DESCRIPTION 100%
+    UNIT_NPC_FLAG_SPIRITHEALER          : 0x00004000,       // TITLE is spirit healer DESCRIPTION guessed
+    UNIT_NPC_FLAG_SPIRITGUIDE           : 0x00008000,       // TITLE is spirit guide DESCRIPTION guessed
+    UNIT_NPC_FLAG_INNKEEPER             : 0x00010000,       // TITLE is innkeeper
+    UNIT_NPC_FLAG_BANKER                : 0x00020000,       // TITLE is banker DESCRIPTION 100%
+    UNIT_NPC_FLAG_PETITIONER            : 0x00040000,       // TITLE handles guild/arena petitions DESCRIPTION 100% 0xC0000 : guild petitions, 0x40000 : arena team petitions
+    UNIT_NPC_FLAG_TABARDDESIGNER        : 0x00080000,       // TITLE is guild tabard designer DESCRIPTION 100%
+    UNIT_NPC_FLAG_BATTLEMASTER          : 0x00100000,       // TITLE is battlemaster DESCRIPTION 100%
+    UNIT_NPC_FLAG_AUCTIONEER            : 0x00200000,       // TITLE is auctioneer DESCRIPTION 100%
+    UNIT_NPC_FLAG_STABLEMASTER          : 0x00400000,       // TITLE is stable master DESCRIPTION 100%
+    UNIT_NPC_FLAG_GUILD_BANKER          : 0x00800000,       // TITLE is guild banker DESCRIPTION cause client to send 997 opcode
+    UNIT_NPC_FLAG_SPELLCLICK            : 0x01000000,       // TITLE has spell click enabled DESCRIPTION cause client to send 1015 opcode (spell click)
+    UNIT_NPC_FLAG_PLAYER_VEHICLE        : 0x02000000,       // TITLE is player vehicle DESCRIPTION players with mounts that have vehicle data should have it set
+    UNIT_NPC_FLAG_MAILBOX               : 0x04000000,        // TITLE is mailbox
 
 
     /**
@@ -207,46 +230,11 @@ export const tempEnum = {
     PLAYER_EVENT_ON_COMMAND                 :     42,       // (event, player, command) - player is nil if command used from console. Can return false
 
 
-    POWER_MANA        : 0,
-    POWER_RAGE        : 1,
-    POWER_FOCUS       : 2,
-    POWER_ENERGY      : 3,
-    POWER_HAPPINESS   : 4,
-    POWER_RUNE        : 5,
-    POWER_RUNIC_POWER : 6,
-    MAX_POWERS        : 7,
-    POWER_ALL         : 127,         // default for class?
-    POWER_HEALTH      : 0xFFFFFFFE,   // (-2 as signed value)
+    PACKET_EVENT_ON_PACKET_RECEIVE          :     5,       // (event, packet, player) - Player only if accessible. Can return false, newPacket
+    PACKET_EVENT_ON_PACKET_RECEIVE_UNKNOWN  :     6,       // Not Implemented
+    PACKET_EVENT_ON_PACKET_SEND             :     7,       // (event, packet, player) - Player only if accessible. Can return false, newPacket
 
-
-    UNIT_NPC_FLAG_NONE                  : 0x00000000,       // SKIP
-    UNIT_NPC_FLAG_GOSSIP                : 0x00000001,       // TITLE has gossip menu DESCRIPTION 100%
-    UNIT_NPC_FLAG_QUESTGIVER            : 0x00000002,       // TITLE is quest giver DESCRIPTION guessed, probably ok
-    UNIT_NPC_FLAG_UNK1                  : 0x00000004,
-    UNIT_NPC_FLAG_UNK2                  : 0x00000008,
-    UNIT_NPC_FLAG_TRAINER               : 0x00000010,       // TITLE is trainer DESCRIPTION 100%
-    UNIT_NPC_FLAG_TRAINER_CLASS         : 0x00000020,       // TITLE is class trainer DESCRIPTION 100%
-    UNIT_NPC_FLAG_TRAINER_PROFESSION    : 0x00000040,       // TITLE is profession trainer DESCRIPTION 100%
-    UNIT_NPC_FLAG_VENDOR                : 0x00000080,       // TITLE is vendor (generic) DESCRIPTION 100%
-    UNIT_NPC_FLAG_VENDOR_AMMO           : 0x00000100,       // TITLE is vendor (ammo) DESCRIPTION 100%, general goods vendor
-    UNIT_NPC_FLAG_VENDOR_FOOD           : 0x00000200,       // TITLE is vendor (food) DESCRIPTION 100%
-    UNIT_NPC_FLAG_VENDOR_POISON         : 0x00000400,       // TITLE is vendor (poison) DESCRIPTION guessed
-    UNIT_NPC_FLAG_VENDOR_REAGENT        : 0x00000800,       // TITLE is vendor (reagents) DESCRIPTION 100%
-    UNIT_NPC_FLAG_REPAIR                : 0x00001000,       // TITLE can repair DESCRIPTION 100%
-    UNIT_NPC_FLAG_FLIGHTMASTER          : 0x00002000,       // TITLE is flight master DESCRIPTION 100%
-    UNIT_NPC_FLAG_SPIRITHEALER          : 0x00004000,       // TITLE is spirit healer DESCRIPTION guessed
-    UNIT_NPC_FLAG_SPIRITGUIDE           : 0x00008000,       // TITLE is spirit guide DESCRIPTION guessed
-    UNIT_NPC_FLAG_INNKEEPER             : 0x00010000,       // TITLE is innkeeper
-    UNIT_NPC_FLAG_BANKER                : 0x00020000,       // TITLE is banker DESCRIPTION 100%
-    UNIT_NPC_FLAG_PETITIONER            : 0x00040000,       // TITLE handles guild/arena petitions DESCRIPTION 100% 0xC0000 : guild petitions, 0x40000 : arena team petitions
-    UNIT_NPC_FLAG_TABARDDESIGNER        : 0x00080000,       // TITLE is guild tabard designer DESCRIPTION 100%
-    UNIT_NPC_FLAG_BATTLEMASTER          : 0x00100000,       // TITLE is battlemaster DESCRIPTION 100%
-    UNIT_NPC_FLAG_AUCTIONEER            : 0x00200000,       // TITLE is auctioneer DESCRIPTION 100%
-    UNIT_NPC_FLAG_STABLEMASTER          : 0x00400000,       // TITLE is stable master DESCRIPTION 100%
-    UNIT_NPC_FLAG_GUILD_BANKER          : 0x00800000,       // TITLE is guild banker DESCRIPTION cause client to send 997 opcode
-    UNIT_NPC_FLAG_SPELLCLICK            : 0x01000000,       // TITLE has spell click enabled DESCRIPTION cause client to send 1015 opcode (spell click)
-    UNIT_NPC_FLAG_PLAYER_VEHICLE        : 0x02000000,       // TITLE is player vehicle DESCRIPTION players with mounts that have vehicle data should have it set
-    UNIT_NPC_FLAG_MAILBOX               : 0x04000000,        // TITLE is mailbox
+    //PACKET_EVENT_COUNT
 
 
     RACE_NONE               : 0,  // SKIP
@@ -273,11 +261,28 @@ export const tempEnum = {
     //RACE_ICE_TROLL          : 21
 
 
+    POWER_MANA        : 0,
+    POWER_RAGE        : 1,
+    POWER_FOCUS       : 2,
+    POWER_ENERGY      : 3,
+    POWER_HAPPINESS   : 4,
+    POWER_RUNE        : 5,
+    POWER_RUNIC_POWER : 6,
+    MAX_POWERS        : 7,
+    POWER_ALL         : 127,         // default for class?
+    POWER_HEALTH      : 0xFFFFFFFE,   // (-2 as signed value)
+
+
     SELECT_TARGET_RANDOM : 0,  //Just selects a random target
     SELECT_TARGET_TOPAGGRO : 1,    //Selects targets from top aggro to bottom
     SELECT_TARGET_BOTTOMAGGRO : 2, //Selects targets from bottom aggro to top
     SELECT_TARGET_NEAREST : 3,
     SELECT_TARGET_FARTHEST : 4,
+
+
+    SHEATH_STATE_UNARMED  : 0, // non prepared weapon
+    SHEATH_STATE_MELEE    : 1, // prepared melee weapon
+    SHEATH_STATE_RANGED   : 2,  // prepared ranged weapon
 
 
     // Server
@@ -336,21 +341,6 @@ export const tempEnum = {
     GAME_EVENT_STOP                         :     35,       // (event, gameeventid)
 
 
-    SHEATH_STATE_UNARMED  : 0, // non prepared weapon
-    SHEATH_STATE_MELEE    : 1, // prepared melee weapon
-    SHEATH_STATE_RANGED   : 2,  // prepared ranged weapon
-
-
-    SPELL_SCHOOL_MASK_NONE    : 0,
-    SPELL_SCHOOL_MASK_NORMAL  : 1,
-    SPELL_SCHOOL_MASK_HOLY    : 2,
-    SPELL_SCHOOL_MASK_FIRE    : 4,
-    SPELL_SCHOOL_MASK_NATURE  : 8,
-    SPELL_SCHOOL_MASK_FROST   : 16,
-    SPELL_SCHOOL_MASK_SHADOW  : 32,
-    SPELL_SCHOOL_MASK_ARCANE  : 64,
-
-
     SPELL_SCHOOL_NORMAL  : 0,
     SPELL_SCHOOL_HOLY    : 1,
     SPELL_SCHOOL_FIRE    : 2,
@@ -370,6 +360,16 @@ export const tempEnum = {
     MOVE_FLIGHT         : 6,
     MOVE_FLIGHT_BACK    : 7,
     MOVE_PITCH_RATE     : 8,
+
+
+    SPELL_SCHOOL_MASK_NONE    : 0,
+    SPELL_SCHOOL_MASK_NORMAL  : 1,
+    SPELL_SCHOOL_MASK_HOLY    : 2,
+    SPELL_SCHOOL_MASK_FIRE    : 4,
+    SPELL_SCHOOL_MASK_NATURE  : 8,
+    SPELL_SCHOOL_MASK_FROST   : 16,
+    SPELL_SCHOOL_MASK_SHADOW  : 32,
+    SPELL_SCHOOL_MASK_ARCANE  : 64,
 
 
     UNIT_STATE_DIED                  : 0x00000001, // player has fake death aura

@@ -3,8 +3,10 @@ import * as path from "path"
 
 let table = ""
 let data = fs.readdirSync('./eluna/enum')
+console.log("开始")
 fs.writeFileSync(path.resolve() + "/transfrom/enum.ts","")
 data.forEach((filename,index)=>{
+    console.log(index)
     if(index == 0){
         fs.appendFileSync(path.resolve() + "/transfrom/enum.ts","export const tempEnum = {")
     }

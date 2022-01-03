@@ -2,7 +2,7 @@ import * as tstl from "typescript-to-lua";
 import * as ts from "typescript";
 import * as lua from "typescript-to-lua";
 import { SourceNode } from "source-map";
-import { createAssignmentStatement, createBlock, createFile, createFunctionExpression, createIdentifier, createStringLiteral, isAssignmentStatement, LuaLibImportKind, tstlHeader } from "typescript-to-lua";
+import { createAssignmentStatement, createBlock, createFile, createFunctionExpression, createIdentifier, createStringLiteral, isAssignmentStatement, isFunctionExpression, LuaLibImportKind, tstlHeader } from "typescript-to-lua";
 import { peekScope } from "typescript-to-lua/dist/transformation/utils/scope";
 import {
   AnnotationKind,
@@ -153,6 +153,10 @@ interface PluginOptions {
   globals: PluginGlobals
 }
 
+function enumChace(key:string){
+    return tempEnum[key].toString() ?? key
+}
+
 export default function (options: PluginOptions): tstl.Plugin {
   const fileMatcher = new RegExp(options.match ? options.match : ".*");
   const keyvalue: Record<string, string> = {}
@@ -166,13 +170,58 @@ export default function (options: PluginOptions): tstl.Plugin {
           return this.concatNodes(file.trivia, ...this.printStatementArray(file.statements));
         }
 
+        protected printBlock(block: tstl.Block): SourceNode {
+            const chunk = []
+            for(const statement of block.statements){
+                if(tstl.isVariableDeclarationStatement(statement)){
+                  //@ts-ignore
+                    if(statement?.right[0]?.index){
+                      //@ts-ignore
+                          //@ts-ignore
+                            const enumstr = tempEnum[statement!.right[0]!.index!.value]
+                            chunk.push(this.indent(enumstr ?`local ${statement.left[0].text} = ${enumstr}` : statement!.right[0]!.index!.value.toString()))
+                            chunk.push('\n')
+                            this.pushIndent()
+                            continue
+                    }
+                }
+                if(tstl.isExpressionStatement(statement)){
+                    let count = 0
+                    let parmas = []
+                    parmas = statement.expression.params.map(element => {
+                      count++
+                        if(element.index){
+                            console.log(enumChace(element.index.value),"美劇")
+                            return enumChace(element.index.value)
+                        }
+                        if(element.text){
+                            return element.text
+                        }
+                        if(element.value){
+                          return `"${element.value}"`
+                        }
+                    })
+                    console.log("循環了c",count)
+                    console.log(statement.expression)
+                    
+                    chunk.push(`${statement.expression.expression.text}(${[...parmas].toString()})`)
+                    this.pushIndent()
+                    continue
+                }
+                  chunk.push(this.printStatement(statement))
+                  continue
+            }
+            return this.concatNodes(...chunk)
+        }
+
         printVariableAssignmentStatement(statement: tstl.AssignmentStatement): SourceNode {
             if(statement.right){
                 //@ts-ignore
               if(statement?.left[0]?.text && tempEnum[statement?.right[0]?.index?.value]){
-                 console.log(statement?.left[0])
                 //@ts-ignore
                  return  super.printVariableAssignmentStatement(createAssignmentStatement( [createIdentifier(statement?.left[0]?.text,undefined,statement?.left[0].symbolId)],[createIdentifier(tempEnum[statement?.right[0]?.index?.value].toString())]))
+              }else{
+                 return super.printVariableAssignmentStatement(statement)
               }
             }
             return super.printVariableAssignmentStatement(statement)
@@ -181,7 +230,7 @@ export default function (options: PluginOptions): tstl.Plugin {
         override printIfStatement(statement: tstl.IfStatement, isElseIf?: boolean): SourceNode {
           const chunks = [];
           const prefix = isElseIf ? "elseif" : "if";
-          chunks.push(this.indent(prefix + " "), this.printExpression(statement.condition), " then\n");
+          chunks.push(this.indent(prefix + " "),this.printExpression(statement.condition), " then\n");
           const sourter = this.printExpression(statement.condition)
           const name = sourter.source
           const newName = name.replace("../src/", "").replace(".ts", "")
@@ -195,10 +244,11 @@ export default function (options: PluginOptions): tstl.Plugin {
               this.pushIndent();
             }
             chunks.push(this.printBlock(statement.ifBlock))
+            this.pushIndent();
           }
 
           if (statement.elseBlock) {
-            if (lua.isIfStatement(statement.elseBlock)) {
+           if (lua.isIfStatement(statement.elseBlock)) {
               chunks.push(this.printIfStatement(statement.elseBlock, true));
             } else {
               chunks.push(this.indent("else\n"));
