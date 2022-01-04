@@ -3,11 +3,11 @@
    放置AIO核心文件夹旁 并添加TOC 核心标识 #core
    **/
 "client"
-export{}
-const PingPangFunction = (player:Player,msg:string) =>{
-    print(tostring(msg))
-    AIO.Msg().Add("PingPong","Ping").Send()
-} 
 if(!AIO.AddAddon()){
-    AIO.RegisterEvent("PingPong",PingPangFunction)
+    AIO.RegisterEvent("PingPang",(player:Player,msg:string)=>{
+        print(tostring(msg))
+        print("收到消息")
+    })
+    AIO.Msg().Add("PingPang","GOTO").Send()
+    print("client PingPang")
 }
