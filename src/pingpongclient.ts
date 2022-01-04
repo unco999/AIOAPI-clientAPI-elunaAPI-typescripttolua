@@ -24,8 +24,9 @@ if(!AIO.AddAddon()){
     frame.EnableMouse(true)
     frame.RegisterForDrag("LeftButton")
     frame.SetMovable(true)
-    frame.SetScript("OnLeave")
-    
+    frame.SetScript("OnDragStart",()=>frame.StartMoving())
+    frame.SetScript("OnDragStop",()=>frame.StopMovingOrSizing())
+
     const button = CreateFrame("Button","framebutton",frame,"UIPanelButtonTemplate")
     button.SetText("我草你妈")
     button.EnableKeyboard(true)

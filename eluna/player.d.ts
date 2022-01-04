@@ -1,7 +1,4 @@
-/**
- * @compileMembersOnly
- */
-declare interface Player extends Object extends WorldObject extends Unit{
+declare interface Player extends Object,WorldObject,Unit{
     /**
      * 将组合点添加到玩家
      * @param target Unit实例

@@ -2,7 +2,7 @@
 /**
  * @compileMembersOnly
  */
-declare interface Creature extends Unit extends Object extends WorldObject{
+declare interface Creature extends Unit,Object,WorldObject{
     /**
      * 为生物添加战利品模式
      * @param lootMode 有效数字：从 0 到 65,535 的整数。

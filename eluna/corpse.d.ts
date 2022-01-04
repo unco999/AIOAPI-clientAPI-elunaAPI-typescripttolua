@@ -1,7 +1,7 @@
 /**
  * @compileMembersOnly
  */
-declare interface Corpse extends Object extends WorldObject{
+declare interface Corpse extends Object,WorldObject{
     /**
      * 返回玩家变成鬼魂并生成此尸体的时间。
      */
