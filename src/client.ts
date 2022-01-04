@@ -3,11 +3,9 @@
    放置AIO核心文件夹旁 并添加TOC 核心标识 #core
    **/
 "client"
+let temp = {var:0}; 
 if(!AIO.AddAddon()){
-    class Client{
-        constructor(){
-            console.log("hellow client")
-        }
-    }
-    const _server = new Client()
+    AIO.AddSavedVar("temp")
+    temp.var++
+    print(temp.var)
 }

@@ -138,6 +138,29 @@ export const tempEnum = {
    // INSTANCE_EVENT_COUNT
 
 
+    EQUIPMENT_SLOT_START        : 0,
+    EQUIPMENT_SLOT_HEAD         : 0,
+    EQUIPMENT_SLOT_NECK         : 1,
+    EQUIPMENT_SLOT_SHOULDERS    : 2,
+    EQUIPMENT_SLOT_BODY         : 3,
+    EQUIPMENT_SLOT_CHEST        : 4,
+    EQUIPMENT_SLOT_WAIST        : 5,
+    EQUIPMENT_SLOT_LEGS         : 6,
+    EQUIPMENT_SLOT_FEET         : 7,
+    EQUIPMENT_SLOT_WRISTS       : 8,
+    EQUIPMENT_SLOT_HANDS        : 9,
+    EQUIPMENT_SLOT_FINGER1      : 10,
+    EQUIPMENT_SLOT_FINGER2      : 11,
+    EQUIPMENT_SLOT_TRINKET1     : 12,
+    EQUIPMENT_SLOT_TRINKET2     : 13,
+    EQUIPMENT_SLOT_BACK         : 14,
+    EQUIPMENT_SLOT_MAINHAND     : 15,
+    EQUIPMENT_SLOT_OFFHAND      : 16,
+    EQUIPMENT_SLOT_RANGED       : 17,
+    EQUIPMENT_SLOT_TABARD       : 18,
+    EQUIPMENT_SLOT_END          : 19,
+
+
     LOCALE_enUS : 0,
     LOCALE_koKR : 1,
     LOCALE_frFR : 2,
@@ -276,6 +299,16 @@ export const tempEnum = {
     POWER_HEALTH      : 0xFFFFFFFE,   // (-2 as signed value)
 
 
+    QUEST_STATUS_NONE           : 0,
+    QUEST_STATUS_COMPLETE       : 1,
+    //QUEST_STATUS_UNAVAILABLE    : 2,
+    QUEST_STATUS_INCOMPLETE     : 3,
+    //QUEST_STATUS_AVAILABLE      : 4,
+    QUEST_STATUS_FAILED         : 5,
+    QUEST_STATUS_REWARDED       : 6,        // Not used in DB
+    // MAX_QUEST_STATUS
+
+
     RACE_NONE               : 0,  // SKIP
     RACE_HUMAN              : 1,  // TITLE Human
     RACE_ORC                : 2,  // TITLE Orc
@@ -298,6 +331,12 @@ export const tempEnum = {
     //RACE_TAUNKA             : 19,
     //RACE_NORTHREND_SKELETON : 20,
     //RACE_ICE_TROLL          : 21
+
+
+    GROUP_REMOVEMETHOD_DEFAULT  : 0,
+    GROUP_REMOVEMETHOD_KICK     : 1,
+    GROUP_REMOVEMETHOD_LEAVE    : 2,
+    GROUP_REMOVEMETHOD_KICK_LFG : 3
 
 
     REP_HATED       : 0,
@@ -425,6 +464,16 @@ export const tempEnum = {
     TEMPSUMMON_TIMED_OOC_OR_DEAD_DESPAWN   : 10, // despawns after a specified time (OOC) OR when the creature disappears
 
 
+    TYPEID_OBJECT        : 0,
+    TYPEID_ITEM          : 1,
+    TYPEID_CONTAINER     : 2,
+    TYPEID_UNIT          : 3,
+    TYPEID_PLAYER        : 4,
+    TYPEID_GAMEOBJECT    : 5,
+    TYPEID_DYNAMICOBJECT : 6,
+    TYPEID_CORPSE        : 7
+
+
     TYPEMASK_OBJECT         : 0x0001,
     TYPEMASK_ITEM           : 0x0002,
     TYPEMASK_CONTAINER      : 0x0006,                       // TYPEMASK_ITEM | 0x0004
@@ -479,5 +528,13 @@ export const tempEnum = {
     UNIT_STATE_FOLLOW_FORMATION_MOVE : 0x20000000,
 
     /** @end */
+
+
+    WEATHER_TYPE_FINE       : 0,
+    WEATHER_TYPE_RAIN       : 1,
+    WEATHER_TYPE_SNOW       : 2,
+    WEATHER_TYPE_STORM      : 3,
+    WEATHER_TYPE_THUNDERS   : 86,
+    WEATHER_TYPE_BLACKRAIN  : 90
 
 }
