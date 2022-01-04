@@ -10,13 +10,11 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "typeRoots": [
-      "node_modules/@wartoshika/wow-declarations",
       "node_modules/lua-types/5.1",
       "node_modules/@types"
     ],
     "types": [
       "lua-types/5.1",
-      "@wartoshika/wow-declarations"
     ]
   },
   "exclude": ["./transfrom"],
@@ -24,7 +22,8 @@
     "./@types/",
     "./src/",
     "./AIO",
-    "./eluna"
+    "./eluna",
+    "./wow-api/wow-declarations/declarations/index.d.ts"
   ],
   "tstl": {
     "noImplicitSelf":true,

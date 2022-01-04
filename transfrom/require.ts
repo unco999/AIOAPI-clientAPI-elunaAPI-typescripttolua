@@ -174,15 +174,12 @@ export default function (options: PluginOptions): tstl.Plugin {
             const chunk = []
             for(const statement of block.statements){
                 if(statement?.expression?.prefixExpression){
-                  console.log(statement?.expression)
-                  console.log("打印")
                   chunk.push(this.printStatement(statement))
                   continue;
                 }
                 if(tstl.isVariableDeclarationStatement(statement)){
                   //@ts-ignore
-                    if(statement?.right[0]?.index){
-                      //@ts-ignore
+                    if(statement?.right && statement.right[0]?.index){
                           //@ts-ignore
                             const enumstr = tempEnum[statement!.right[0]!.index!.value]
                             chunk.push(this.indent(enumstr ?`local ${statement.left[0].text} = ${enumstr} \n` : statement!.right[0]!.index!.value.toString() + "\n"))
