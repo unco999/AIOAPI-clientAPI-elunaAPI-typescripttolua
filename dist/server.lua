@@ -11,7 +11,7 @@ require("mysql_tool.mysql_tool_main")
     function Server.prototype.____constructor(self)
 print("hellow Server") 
         end
-        e.c.a:d()print(21) 
+        e.c.a:d()print(1) 
             local asdhjk = 35 
 
                 local _server = __TS__New(Server)

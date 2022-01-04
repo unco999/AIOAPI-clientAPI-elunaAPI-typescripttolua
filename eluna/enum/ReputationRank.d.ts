@@ -1,6 +1,3 @@
-/**
- * @compileMembersOnly
- */
 declare enum ReputationRank
 {
     REP_HATED       = 0,
@@ -10,12 +7,5 @@ declare enum ReputationRank
     REP_FRIENDLY    = 4,
     REP_HONORED     = 5,
     REP_REVERED     = 6,
-    REP_EXALTED     = 7
-};
-
-declare enum TeamId
-{
-    TEAM_ALLIANCE = 0,
-    TEAM_HORDE,
-    TEAM_NEUTRAL
+    REP_EXALTED     = 7,
 };

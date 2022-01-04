@@ -9,5 +9,5 @@ declare enum TempSummonType
     TEMPSUMMON_DEAD_DESPAWN                = 7, // despawns when the creature disappears
     TEMPSUMMON_MANUAL_DESPAWN              = 8, // despawns when UnSummon() is called
     TEMPSUMMON_TIMED_OOC_OR_CORPSE_DESPAWN = 9, // despawns after a specified time (OOC) OR when the creature dies
-    TEMPSUMMON_TIMED_OOC_OR_DEAD_DESPAWN   = 10 // despawns after a specified time (OOC) OR when the creature disappears
+    TEMPSUMMON_TIMED_OOC_OR_DEAD_DESPAWN   = 10, // despawns after a specified time (OOC) OR when the creature disappears
 };

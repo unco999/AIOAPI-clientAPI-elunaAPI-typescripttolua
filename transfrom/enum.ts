@@ -1,4 +1,31 @@
 export const tempEnum = {
+    BG_BRACKET_ID_FIRST          : 0,
+    BG_BRACKET_ID_LAST           : 15,
+
+
+    STATUS_NONE         : 0,                                // first status, should mean bg is not instance
+    STATUS_WAIT_QUEUE   : 1,                                // means bg is empty and waiting for queue
+    STATUS_WAIT_JOIN    : 2,                                // this means, that BG has already started and it is waiting for more players
+    STATUS_IN_PROGRESS  : 3,                                // means bg is running
+    STATUS_WAIT_LEAVE   : 4,                                 // means some faction has won BG and it is ending
+
+
+    BATTLEGROUND_TYPE_NONE      : 0, // None
+    BATTLEGROUND_AV             : 1, // Alterac Valley
+    BATTLEGROUND_WS             : 2, // Warsong Gulch
+    BATTLEGROUND_AB             : 3, // Arathi Basin
+    BATTLEGROUND_NA             : 4, // Nagrand Arena
+    BATTLEGROUND_BE             : 5, // Blade's Edge Arena
+    BATTLEGROUND_AA             : 6, // All Arenas
+    BATTLEGROUND_EY             : 7, // Eye of the Storm
+    BATTLEGROUND_RL             : 8, // Ruins of Lordaernon
+    BATTLEGROUND_SA             : 9, // Strand of the Ancients
+    BATTLEGROUND_DS             : 10, // Dalaran Sewers
+    BATTLEGROUND_RV             : 11, // Ring of Valor
+    BATTLEGROUND_IC             : 30, // Isle of Conquest
+    BATTLEGROUND_RB             : 32,  // Random Battleground
+
+
     CREATURE_EVENT_ON_ENTER_COMBAT                    : 1,  // (event, creature, target) - Can return true to stop normal action
     CREATURE_EVENT_ON_LEAVE_COMBAT                    : 2,  // (event, creature) - Can return true to stop normal action
     CREATURE_EVENT_ON_TARGET_DIED                     : 3,  // (event, creature, victim) - Can return true to stop normal action
@@ -273,6 +300,16 @@ export const tempEnum = {
     //RACE_ICE_TROLL          : 21
 
 
+    REP_HATED       : 0,
+    REP_HOSTILE     : 1,
+    REP_UNFRIENDLY  : 2,
+    REP_NEUTRAL     : 3,
+    REP_FRIENDLY    : 4,
+    REP_HONORED     : 5,
+    REP_REVERED     : 6,
+    REP_EXALTED     : 7,
+
+
     SELECT_TARGET_RANDOM : 0,  //Just selects a random target
     SELECT_TARGET_TOPAGGRO : 1,    //Selects targets from top aggro to bottom
     SELECT_TARGET_BOTTOMAGGRO : 2, //Selects targets from bottom aggro to top
@@ -359,6 +396,44 @@ export const tempEnum = {
     SPELL_SCHOOL_SHADOW  : 5,
     SPELL_SCHOOL_ARCANE  : 6,
     MAX_SPELL_SCHOOL     : 7,
+
+
+    HORDE               : 67,
+    ALLIANCE            : 469,
+    //TEAM_STEAMWHEEDLE_CARTEL : 169,                       // not used in code
+    //TEAM_ALLIANCE_FORCES     : 891,
+    //TEAM_HORDE_FORCES        : 892,
+    //TEAM_SANCTUARY           : 936,
+    //TEAM_OUTLAND             : 980,
+    TEAM_OTHER               : 0,                            // if ReputationListId > 0 && Flags !: FACTION_FLAG_TEAM_HEADER
+
+
+    TEAM_ALLIANCE : 0,
+    TEAM_HORDE : 1,
+    TEAM_NEUTRAL : 2,
+
+
+    TEMPSUMMON_TIMED_OR_DEAD_DESPAWN       : 1, // despawns after a specified time OR when the creature disappears
+    TEMPSUMMON_TIMED_OR_CORPSE_DESPAWN     : 2, // despawns after a specified time OR when the creature dies
+    TEMPSUMMON_TIMED_DESPAWN               : 3, // despawns after a specified time
+    TEMPSUMMON_TIMED_DESPAWN_OUT_OF_COMBAT : 4, // despawns after a specified time after the creature is out of combat
+    TEMPSUMMON_CORPSE_DESPAWN              : 5, // despawns instantly after death
+    TEMPSUMMON_CORPSE_TIMED_DESPAWN        : 6, // despawns after a specified time after death
+    TEMPSUMMON_DEAD_DESPAWN                : 7, // despawns when the creature disappears
+    TEMPSUMMON_MANUAL_DESPAWN              : 8, // despawns when UnSummon() is called
+    TEMPSUMMON_TIMED_OOC_OR_CORPSE_DESPAWN : 9, // despawns after a specified time (OOC) OR when the creature dies
+    TEMPSUMMON_TIMED_OOC_OR_DEAD_DESPAWN   : 10, // despawns after a specified time (OOC) OR when the creature disappears
+
+
+    TYPEMASK_OBJECT         : 0x0001,
+    TYPEMASK_ITEM           : 0x0002,
+    TYPEMASK_CONTAINER      : 0x0006,                       // TYPEMASK_ITEM | 0x0004
+    TYPEMASK_UNIT           : 0x0008,                       // creature
+    TYPEMASK_PLAYER         : 0x0010,
+    TYPEMASK_GAMEOBJECT     : 0x0020,
+    TYPEMASK_DYNAMICOBJECT  : 0x0040,
+    TYPEMASK_CORPSE         : 0x0080,
+    /** @end */
 
 
     MOVE_WALK           : 0,
