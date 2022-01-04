@@ -1,34 +1,4 @@
 export const tempEnum = {
-    CURRENT_MELEE_SPELL             : 0,
-    CURRENT_GENERIC_SPELL           : 1,
-    CURRENT_CHANNELED_SPELL         : 2,
-    CURRENT_AUTOREPEAT_SPELL        : 3,
-
-
-    ALIVE          : 0,
-    JUST_DIED      : 1,
-    CORPSE         : 2,
-    DEAD           : 3,
-    JUST_RESPAWNED : 4,
-
-
-    GAMEOBJECT_EVENT_ON_AIUPDATE                    : 1,    // (event, go, diff)
-    GAMEOBJECT_EVENT_ON_SPAWN                       : 2,    // (event, go)
-    GAMEOBJECT_EVENT_ON_DUMMY_EFFECT                : 3,    // (event, caster, spellid, effindex, go) - Can return true
-    GAMEOBJECT_EVENT_ON_QUEST_ACCEPT                : 4,    // (event, player, go, quest) - Can return true
-    GAMEOBJECT_EVENT_ON_QUEST_REWARD                : 5,    // (event, player, go, quest, opt) - Can return true
-    GAMEOBJECT_EVENT_ON_DIALOG_STATUS               : 6,    // (event, player, go)
-    GAMEOBJECT_EVENT_ON_DESTROYED                   : 7,    // (event, go, player)
-    GAMEOBJECT_EVENT_ON_DAMAGED                     : 8,    // (event, go, player)
-    GAMEOBJECT_EVENT_ON_LOOT_STATE_CHANGE           : 9,    // (event, go, state)
-    GAMEOBJECT_EVENT_ON_GO_STATE_CHANGED            : 10,   // (event, go, state)
-    // UNUSED                                       : 11,   // (event, gameobject)
-    GAMEOBJECT_EVENT_ON_ADD                         : 12,   // (event, gameobject)
-    GAMEOBJECT_EVENT_ON_REMOVE                      : 13,   // (event, gameobject)
-    GAMEOBJECT_EVENT_ON_USE                         : 14,   // (event, go, player)
-    //GAMEOBJECT_EVENT_COUNT
-
-
     CREATURE_EVENT_ON_ENTER_COMBAT                    : 1,  // (event, creature, target) - Can return true to stop normal action
     CREATURE_EVENT_ON_LEAVE_COMBAT                    : 2,  // (event, creature) - Can return true to stop normal action
     CREATURE_EVENT_ON_TARGET_DIED                     : 3,  // (event, creature, victim) - Can return true to stop normal action
@@ -69,6 +39,52 @@ export const tempEnum = {
 //    CREATURE_EVENT_COUNT                                 
 
 
+    CURRENT_MELEE_SPELL             : 0,
+    CURRENT_GENERIC_SPELL           : 1,
+    CURRENT_CHANNELED_SPELL         : 2,
+    CURRENT_AUTOREPEAT_SPELL        : 3,
+
+
+    ALIVE          : 0,
+    JUST_DIED      : 1,
+    CORPSE         : 2,
+    DEAD           : 3,
+    JUST_RESPAWNED : 4,
+
+
+    GAMEOBJECT_EVENT_ON_AIUPDATE                    : 1,    // (event, go, diff)
+    GAMEOBJECT_EVENT_ON_SPAWN                       : 2,    // (event, go)
+    GAMEOBJECT_EVENT_ON_DUMMY_EFFECT                : 3,    // (event, caster, spellid, effindex, go) - Can return true
+    GAMEOBJECT_EVENT_ON_QUEST_ACCEPT                : 4,    // (event, player, go, quest) - Can return true
+    GAMEOBJECT_EVENT_ON_QUEST_REWARD                : 5,    // (event, player, go, quest, opt) - Can return true
+    GAMEOBJECT_EVENT_ON_DIALOG_STATUS               : 6,    // (event, player, go)
+    GAMEOBJECT_EVENT_ON_DESTROYED                   : 7,    // (event, go, player)
+    GAMEOBJECT_EVENT_ON_DAMAGED                     : 8,    // (event, go, player)
+    GAMEOBJECT_EVENT_ON_LOOT_STATE_CHANGE           : 9,    // (event, go, state)
+    GAMEOBJECT_EVENT_ON_GO_STATE_CHANGED            : 10,   // (event, go, state)
+    // UNUSED                                       : 11,   // (event, gameobject)
+    GAMEOBJECT_EVENT_ON_ADD                         : 12,   // (event, gameobject)
+    GAMEOBJECT_EVENT_ON_REMOVE                      : 13,   // (event, gameobject)
+    GAMEOBJECT_EVENT_ON_USE                         : 14,   // (event, go, player)
+    //GAMEOBJECT_EVENT_COUNT
+
+
+    GOSSIP_EVENT_ON_HELLO                           : 1,    // (event, player, object) - Object is the Creature/GameObject/Item. Can return false to do default action. For item gossip can return false to stop spell casting.
+    GOSSIP_EVENT_ON_SELECT                          : 2,    // (event, player, object, sender, intid, code, menu_id) - Object is the Creature/GameObject/Item/Player, menu_id is only for player gossip. Can return false to do default action.
+   // GOSSIP_EVENT_COUNT
+
+
+    // Group
+    GROUP_EVENT_ON_MEMBER_ADD               :     1,       // (event, group, guid)
+    GROUP_EVENT_ON_MEMBER_INVITE            :     2,       // (event, group, guid)
+    GROUP_EVENT_ON_MEMBER_REMOVE            :     3,       // (event, group, guid, method, kicker, reason)
+    GROUP_EVENT_ON_LEADER_CHANGE            :     4,       // (event, group, newLeaderGuid, oldLeaderGuid)
+    GROUP_EVENT_ON_DISBAND                  :     5,       // (event, group)
+    GROUP_EVENT_ON_CREATE                   :     6,       // (event, group, leaderGuid, groupType)
+
+    //GROUP_EVENT_COUNT
+
+
     // Guild
     GUILD_EVENT_ON_ADD_MEMBER               :     1,       // (event, guild, player, rank)
     GUILD_EVENT_ON_REMOVE_MEMBER            :     2,       // (event, guild, player, isDisbanding)
@@ -95,22 +111,6 @@ export const tempEnum = {
    // INSTANCE_EVENT_COUNT
 
 
-    // Group
-    GROUP_EVENT_ON_MEMBER_ADD               :     1,       // (event, group, guid)
-    GROUP_EVENT_ON_MEMBER_INVITE            :     2,       // (event, group, guid)
-    GROUP_EVENT_ON_MEMBER_REMOVE            :     3,       // (event, group, guid, method, kicker, reason)
-    GROUP_EVENT_ON_LEADER_CHANGE            :     4,       // (event, group, newLeaderGuid, oldLeaderGuid)
-    GROUP_EVENT_ON_DISBAND                  :     5,       // (event, group)
-    GROUP_EVENT_ON_CREATE                   :     6,       // (event, group, leaderGuid, groupType)
-
-    //GROUP_EVENT_COUNT
-
-
-    GOSSIP_EVENT_ON_HELLO                           : 1,    // (event, player, object) - Object is the Creature/GameObject/Item. Can return false to do default action. For item gossip can return false to stop spell casting.
-    GOSSIP_EVENT_ON_SELECT                          : 2,    // (event, player, object, sender, intid, code, menu_id) - Object is the Creature/GameObject/Item/Player, menu_id is only for player gossip. Can return false to do default action.
-   // GOSSIP_EVENT_COUNT
-
-
     LOCALE_enUS : 0,
     LOCALE_koKR : 1,
     LOCALE_frFR : 2,
@@ -120,6 +120,29 @@ export const tempEnum = {
     LOCALE_esES : 6,
     LOCALE_esMX : 7,
     LOCALE_ruRU : 8,
+
+
+    IDLE_MOTION_TYPE                : 0,
+    RANDOM_MOTION_TYPE              : 1,
+    WAYPOINT_MOTION_TYPE            : 2,
+    MAX_DB_MOTION_TYPE              : 3,
+    ANIMAL_RANDOM_MOTION_TYPE       : 3, // TC
+
+    CONFUSED_MOTION_TYPE            : 4,
+    CHASE_MOTION_TYPE               : 5,
+    HOME_MOTION_TYPE                : 6,
+    FLIGHT_MOTION_TYPE              : 7,
+    POINT_MOTION_TYPE               : 8,
+    FLEEING_MOTION_TYPE             : 9,
+    DISTRACT_MOTION_TYPE            : 10,
+    ASSISTANCE_MOTION_TYPE          : 11,
+    ASSISTANCE_DISTRACT_MOTION_TYPE : 12,          
+    TIMED_FLEEING_MOTION_TYPE       : 13,
+    FOLLOW_MOTION_TYPE              : 14,
+    EFFECT_MOTION_TYPE              : 15, // mangos
+    ROTATE_MOTION_TYPE              : 15, // TC
+    //EFFECT_MOTION_TYPE              : 16, // TC
+    NULL_MOTION_TYPE                : 17, // TC
 
 
     UNIT_NPC_FLAG_NONE                  : 0x00000000,       // SKIP
@@ -214,29 +237,6 @@ export const tempEnum = {
     PLAYER_EVENT_ON_COMMAND                 :     42,       // (event, player, command) - player is nil if command used from console. Can return false
 
 
-    IDLE_MOTION_TYPE                : 0,
-    RANDOM_MOTION_TYPE              : 1,
-    WAYPOINT_MOTION_TYPE            : 2,
-    MAX_DB_MOTION_TYPE              : 3,
-    ANIMAL_RANDOM_MOTION_TYPE       : 3, // TC
-
-    CONFUSED_MOTION_TYPE            : 4,
-    CHASE_MOTION_TYPE               : 5,
-    HOME_MOTION_TYPE                : 6,
-    FLIGHT_MOTION_TYPE              : 7,
-    POINT_MOTION_TYPE               : 8,
-    FLEEING_MOTION_TYPE             : 9,
-    DISTRACT_MOTION_TYPE            : 10,
-    ASSISTANCE_MOTION_TYPE          : 11,
-    ASSISTANCE_DISTRACT_MOTION_TYPE : 12,          
-    TIMED_FLEEING_MOTION_TYPE       : 13,
-    FOLLOW_MOTION_TYPE              : 14,
-    EFFECT_MOTION_TYPE              : 15, // mangos
-    ROTATE_MOTION_TYPE              : 15, // TC
-    //EFFECT_MOTION_TYPE              : 16, // TC
-    NULL_MOTION_TYPE                : 17, // TC
-
-
     POWER_MANA        : 0,
     POWER_RAGE        : 1,
     POWER_FOCUS       : 2,
@@ -247,6 +247,30 @@ export const tempEnum = {
     MAX_POWERS        : 7,
     POWER_ALL         : 127,         // default for class?
     POWER_HEALTH      : 0xFFFFFFFE,   // (-2 as signed value)
+
+
+    RACE_NONE               : 0,  // SKIP
+    RACE_HUMAN              : 1,  // TITLE Human
+    RACE_ORC                : 2,  // TITLE Orc
+    RACE_DWARF              : 3,  // TITLE Dwarf
+    RACE_NIGHTELF           : 4,  // TITLE Night Elf
+    RACE_UNDEAD_PLAYER      : 5,  // TITLE Undead
+    RACE_TAUREN             : 6,  // TITLE Tauren
+    RACE_GNOME              : 7,  // TITLE Gnome
+    RACE_TROLL              : 8,  // TITLE Troll
+    //RACE_GOBLIN             : 9,
+    RACE_BLOODELF           : 10, // TITLE Blood Elf
+    RACE_DRAENEI            : 11, //, TITLE Draenei
+    //RACE_FEL_ORC            : 12,
+    //RACE_NAGA               : 13,
+    //RACE_BROKEN             : 14,
+    //RACE_SKELETON           : 15,
+    //RACE_VRYKUL             : 16,
+    //RACE_TUSKARR            : 17,
+    //RACE_FOREST_TROLL       : 18,
+    //RACE_TAUNKA             : 19,
+    //RACE_NORTHREND_SKELETON : 20,
+    //RACE_ICE_TROLL          : 21
 
 
     SELECT_TARGET_RANDOM : 0,  //Just selects a random target
@@ -312,43 +336,9 @@ export const tempEnum = {
     GAME_EVENT_STOP                         :     35,       // (event, gameeventid)
 
 
-    RACE_NONE               : 0,  // SKIP
-    RACE_HUMAN              : 1,  // TITLE Human
-    RACE_ORC                : 2,  // TITLE Orc
-    RACE_DWARF              : 3,  // TITLE Dwarf
-    RACE_NIGHTELF           : 4,  // TITLE Night Elf
-    RACE_UNDEAD_PLAYER      : 5,  // TITLE Undead
-    RACE_TAUREN             : 6,  // TITLE Tauren
-    RACE_GNOME              : 7,  // TITLE Gnome
-    RACE_TROLL              : 8,  // TITLE Troll
-    //RACE_GOBLIN             : 9,
-    RACE_BLOODELF           : 10, // TITLE Blood Elf
-    RACE_DRAENEI            : 11, //, TITLE Draenei
-    //RACE_FEL_ORC            : 12,
-    //RACE_NAGA               : 13,
-    //RACE_BROKEN             : 14,
-    //RACE_SKELETON           : 15,
-    //RACE_VRYKUL             : 16,
-    //RACE_TUSKARR            : 17,
-    //RACE_FOREST_TROLL       : 18,
-    //RACE_TAUNKA             : 19,
-    //RACE_NORTHREND_SKELETON : 20,
-    //RACE_ICE_TROLL          : 21
-
-
     SHEATH_STATE_UNARMED  : 0, // non prepared weapon
     SHEATH_STATE_MELEE    : 1, // prepared melee weapon
     SHEATH_STATE_RANGED   : 2,  // prepared ranged weapon
-
-
-    SPELL_SCHOOL_NORMAL  : 0,
-    SPELL_SCHOOL_HOLY    : 1,
-    SPELL_SCHOOL_FIRE    : 2,
-    SPELL_SCHOOL_NATURE  : 3,
-    SPELL_SCHOOL_FROST   : 4,
-    SPELL_SCHOOL_SHADOW  : 5,
-    SPELL_SCHOOL_ARCANE  : 6,
-    MAX_SPELL_SCHOOL     : 7,
 
 
     SPELL_SCHOOL_MASK_NONE    : 0,
@@ -359,6 +349,16 @@ export const tempEnum = {
     SPELL_SCHOOL_MASK_FROST   : 16,
     SPELL_SCHOOL_MASK_SHADOW  : 32,
     SPELL_SCHOOL_MASK_ARCANE  : 64,
+
+
+    SPELL_SCHOOL_NORMAL  : 0,
+    SPELL_SCHOOL_HOLY    : 1,
+    SPELL_SCHOOL_FIRE    : 2,
+    SPELL_SCHOOL_NATURE  : 3,
+    SPELL_SCHOOL_FROST   : 4,
+    SPELL_SCHOOL_SHADOW  : 5,
+    SPELL_SCHOOL_ARCANE  : 6,
+    MAX_SPELL_SCHOOL     : 7,
 
 
     MOVE_WALK           : 0,
