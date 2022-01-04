@@ -336,7 +336,7 @@ export const tempEnum = {
     GROUP_REMOVEMETHOD_DEFAULT  : 0,
     GROUP_REMOVEMETHOD_KICK     : 1,
     GROUP_REMOVEMETHOD_LEAVE    : 2,
-    GROUP_REMOVEMETHOD_KICK_LFG : 3
+    GROUP_REMOVEMETHOD_KICK_LFG : 3,
 
 
     REP_HATED       : 0,
@@ -471,7 +471,7 @@ export const tempEnum = {
     TYPEID_PLAYER        : 4,
     TYPEID_GAMEOBJECT    : 5,
     TYPEID_DYNAMICOBJECT : 6,
-    TYPEID_CORPSE        : 7
+    TYPEID_CORPSE        : 7,
 
 
     TYPEMASK_OBJECT         : 0x0001,

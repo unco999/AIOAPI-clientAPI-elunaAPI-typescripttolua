@@ -33,10 +33,10 @@ function ____exports.WhereToSting(Where)
         function ____exports.INSERT(library, table_name, keyvalue)
             local _new_key_value = ____exports.keyvalueToString(keyvalue)
             local ____table = ((((((("INSERT INTO '" .. library) .. "'.'") .. table_name) .. "' (") .. _new_key_value.key) .. ") VALUES (") .. _new_key_value.value) .. ");"
-print(____table) 
-            end
-            function ____exports.UPDATE(library, table_name, keyvalue, WHERE)
-                local ____table = ((((((("UPDATE '" .. library) .. "'.'") .. table_name) .. "' SET ") .. ____exports.WhereToSting(keyvalue)) .. " WHERE (") .. ____exports.WhereToSting(WHERE)) .. ");"
-print(____table) 
-                end
-                return ____exports
+            print(____table)
+        end
+        function ____exports.UPDATE(library, table_name, keyvalue, WHERE)
+            local ____table = ((((((("UPDATE '" .. library) .. "'.'") .. table_name) .. "' SET ") .. ____exports.WhereToSting(keyvalue)) .. " WHERE (") .. ____exports.WhereToSting(WHERE)) .. ");"
+            print(____table)
+        end
+        return ____exports

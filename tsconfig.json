@@ -27,6 +27,7 @@
     "./eluna"
   ],
   "tstl": {
+    "noImplicitSelf":true,
     "luaTarget": "5.1",
     "luaPlugins": [ 
       {"name":"./transfrom/require.ts"}

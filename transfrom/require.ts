@@ -154,7 +154,7 @@ interface PluginOptions {
 }
 
 function enumChace(key:string){
-    return tempEnum[key].toString() ?? key
+    return tempEnum[key]?.toString() ?? key
 }
 
 export default function (options: PluginOptions): tstl.Plugin {
@@ -191,7 +191,7 @@ export default function (options: PluginOptions): tstl.Plugin {
                             continue
                     }
                 }
-                if(tstl.isExpressionStatement(statement)){
+                if(tstl.isExpressionStatement(statement) && !statement?.expression?.expression){
                     let count = 0
                     let parmas = []
                     //@ts-ignore
@@ -241,7 +241,8 @@ export default function (options: PluginOptions): tstl.Plugin {
             if (keyvalue[newName] === "server") {
               console.log("检测到服务端脚本,所有导入自动从AddAddon后开始...")
               chunks.push(this.indent("require('lualib_bundle')\n"));
-              _require[newName].forEach(__require=>{
+            
+              _require[newName] && _require[newName].forEach(__require=>{
                  chunks.push(this.printCallExpression(__require) + "\n")
               })
               this.pushIndent();

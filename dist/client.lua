@@ -1,10 +1,10 @@
 AIO = AIO or require('AIO') 
+local ____exports = {}
 local ____ = "client"
+local function PingPangFunction(player, msg)
+    print(tostring(msg))
+    AIO.Msg():Add("PingPong", "Ping"):Send()end
 if not AIO.AddAddon() then
-local Client = __TS__Class()
-Client.name = "Client"
-function Client.prototype.____constructor(self)
-print("hellow client") 
+AIO.RegisterEvent("PingPong", PingPangFunction)
     end
-    local _server = __TS__New(Client)
-        end
+    return ____exports

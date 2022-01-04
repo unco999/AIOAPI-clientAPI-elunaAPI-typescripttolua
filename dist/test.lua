@@ -3,6 +3,6 @@ local ____ = "pure"
 test = 3
 test1 = 2
 bbbbbbbbbbbbbbb = 6
-function bbb(self)
-print(35,"asdsadasd",bbbbbbbbbbbbbbb) 
-    end
+function bbb()
+    print(CreatureEvents.CREATURE_EVENT_ON_DIALOG_STATUS, "asdsadasd", bbbbbbbbbbbbbbb)
+end
