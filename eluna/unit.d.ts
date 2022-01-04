@@ -1,8 +1,8 @@
 /**
  * @compileMembersOnly
  */
-declare interface Unit{
-    /**
+declare interface Unit extends Object extends WorldObject{
+    /** 
      * 将给定法术条目的光环添加到单位的给定目标上。
      * @param spell 法术的进入 有效数字：从 0 到 4,294,967,295 的整数。
      * @param target 光环将作用于目标。

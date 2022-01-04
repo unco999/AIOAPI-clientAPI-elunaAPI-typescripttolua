@@ -1,7 +1,7 @@
 /**
  * @compileMembersOnly
  */
-declare interface Item{
+declare interface Item extends Object{
     /**
      * 如果项目可以交易，则返回“真”，否则返回“假”
      */
