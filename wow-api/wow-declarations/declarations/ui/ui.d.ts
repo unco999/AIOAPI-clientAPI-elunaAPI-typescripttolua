@@ -57,6 +57,16 @@ declare namespace WoWAPI {
         checked: boolean
     };
 
+    type frameTemplate = "UIPanelButtonTemplate"| //长条状的按钮
+    "UIPanelButtonTemplate2"| //长条状的按钮，与UIPanelButtonTemplate稍有不同
+    "UIPanelCloseButton"| //关闭按钮(X)
+    "InputBoxTemplate"| //聊天窗口所用的输入框
+    "UICheckButtonTemplate"| //复选框模板
+    "UIRadioButtonTemplate"| //单选框模板
+    "TabButtonTemplate"|// 标签模板
+    "GameMenuButtonTemplate"| //游戏系统菜单(按ESC出现)的按钮模板
+    "OptionsSliderTemplate" // 滑块条模板
+
     /**
      * The Frame type
      */
@@ -955,12 +965,12 @@ declare type FontInstanceFlags = "OUTLINE" | "MONOCHROME" | "THICKOUTLINE";
  * @param id ID to assign to the frame. See API Frame SetID
  */
 declare function CreateFrame(
-  frameType: WoWAPI.FrameType, frameName?: string, parentFrame?: WoWAPI.UIObject, inheritsFrame?: string, id?: number,
+  frameType: WoWAPI.FrameType, frameName?: string, parentFrame?: WoWAPI.UIObject, inheritsFrame?: frameTemplate, id?: number,
 ): WoWAPI.UIObject;
-declare function CreateFrame(frameType: "Frame", frameName?: string, parentFrame?: WoWAPI.UIObject, inheritsFrame?: string, id?: number): WoWAPI.Frame;
-declare function CreateFrame(frameType: "Slider", frameName?: string, parentFrame?: WoWAPI.UIObject, inheritsFrame?: string, id?: number): WoWAPI.Slider;
-declare function CreateFrame(frameType: "EditBox", frameName?: string, parentFrame?: WoWAPI.UIObject, inheritsFrame?: string, id?: number): WoWAPI.EditBox;
-declare function CreateFrame(frameType: "Button", frameName?: string, parentFrame?: WoWAPI.UIObject, inheritsFrame?: string, id?: number): WoWAPI.Button;
+declare function CreateFrame(frameType: "Frame", frameName?: string, parentFrame?: WoWAPI.UIObject, inheritsFrame?: WoWAPI.frameTemplate, id?: number): WoWAPI.Frame;
+declare function CreateFrame(frameType: "Slider", frameName?: string, parentFrame?: WoWAPI.UIObject, inheritsFrame?: WoWAPI.frameTemplate, id?: number): WoWAPI.Slider;
+declare function CreateFrame(frameType: "EditBox", frameName?: string, parentFrame?: WoWAPI.UIObject, inheritsFrame?: WoWAPI.frameTemplate, id?: number): WoWAPI.EditBox;
+declare function CreateFrame(frameType: "Button", frameName?: string, parentFrame?: WoWAPI.UIObject, inheritsFrame?: WoWAPI.frameTemplate, id?: number): WoWAPI.Button;
 
 /**
  * Adds a configuration panel (with the fields described in #Panel fields below set) to the category list.

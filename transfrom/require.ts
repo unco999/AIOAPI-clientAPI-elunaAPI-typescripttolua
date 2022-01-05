@@ -2,7 +2,7 @@ import * as tstl from "typescript-to-lua";
 import * as ts from "typescript";
 import * as lua from "typescript-to-lua";
 import { SourceNode } from "source-map";
-import { createAssignmentStatement, createBlock, createFile, createFunctionExpression, createIdentifier, createStringLiteral, isAssignmentStatement, isFunctionExpression, LuaLibImportKind, tstlHeader } from "typescript-to-lua";
+import { createAssignmentStatement, createBlock, createFile, createFunctionExpression, createIdentifier, createStringLiteral, isAssignmentStatement, isCallExpression, isFunctionExpression, LuaLibImportKind, tstlHeader } from "typescript-to-lua";
 import { peekScope } from "typescript-to-lua/dist/transformation/utils/scope";
 import {
   AnnotationKind,
@@ -174,7 +174,15 @@ export default function (options: PluginOptions): tstl.Plugin {
             const chunk = []
             for(const statement of block.statements){
                 if(statement?.expression?.prefixExpression){
-                  chunk.push(this.printStatement(statement))
+                  let table =this.printStatement(statement).toString()
+                  statement.expression.params.map(element => {
+                      if(element?.index?.value){
+                          const front = element.table.text
+                          const replace = enumChace(element.index.value)
+                          table = table.replace(front + "." + element.index.value,replace)
+                      }
+                  })
+                  chunk.push(table)
                   continue;
                 }
                 if(tstl.isVariableDeclarationStatement(statement)){
